@@ -190,21 +190,42 @@ uvicorn app.api.main:app --host 127.0.0.1 --port 8000   # or run_api.bat
 
 ---
 
-## Documentation
+## Documentation Index
+
+Explore the comprehensive design and architectural documentation located in [`/docs`](./docs):
+
+- [**Deep AI Systems Engineering & Architecture Report**](./docs/AI_ENGINEERING_DEEP_TECHNICAL_REPORT.md) — Comprehensive technical report detailing all folders, files, functions, the multi-agent state machine, RAG mathematics, LangMem memory tiers, Arabic NLP engineering, and the LLMOps control plane.
+- [**Visual Architecture Deep Dive**](./docs/ARCHITECTURE_DEEP_DIVE.md) — Detailed Mermaid diagrams covering the data journey from ingestion to observability.
+- [**Interactive Visualizations (HTML)**](./docs/visuals/) — Standalone interactive architecture diagrams:
+  - [AI Architecture Map](./docs/visuals/hakmdar-ai-architecture.html)
+  - [AI Stack Topology](./docs/visuals/hakmdar-ai-stack.html)
+  - [AI Data Flow Engine](./docs/visuals/hakmdar-ai-dataflow.html)
+  - [AI Consultation Sequence](./docs/visuals/hakmdar-ai-sequence.html)
+  - [AI Runtime Lifecycle](./docs/visuals/hakmdar-ai-lifecycle.html)
+  - [Multi-Agent Deep Workflow](./docs/visuals/hakmdar-deep-workflow.html)
+- [**Full Implementation Session Recap**](./docs/SESSION_RECAP_2026-09-15.md) — Line-by-line verification log, bugs diagnosed, and phase milestones.
+- [**LLMOps Operator Guide**](./docs/llmops.md) — Telemetry dictionary, logging envelopes, metrics catalog, and retention schedules.
+- [**Operations & Incident Runbook**](./docs/runbook.md) — Deployment instructions, key rotation, and troubleshooting playbooks.
+- [**Review Board Challenges & Decisions**](./docs/challenges.md) — Active architectural audits and technical trade-off decisions.
+- [**Technical Debt Register**](./.memory/technical_debt.md) — Tracked technical debt entries with assigned owners and resolution targets.
+
+### Architecture Decision Records
+
+| ADR | Decision |
+| --- | --- |
+| [`docs/adr/010-llmops-stack.md`](./docs/adr/010-llmops-stack.md) | LLMOps stack selection (OpenTelemetry-optional, LangSmith-optional, native LangMem) |
+| [`docs/adr/011-langmem-feedback.md`](./docs/adr/011-langmem-feedback.md) | Native LangMem-compatible feedback memory store and the no-poisoning invariant |
+| [`docs/adr/012-eval-gates-ci.md`](./docs/adr/012-eval-gates-ci.md) | Evaluation quality gates enforced in CI |
+
+### Additional Context
 
 | Document | Contents |
 | --- | --- |
-| [`docs/AI_ENGINEERING_DEEP_TECHNICAL_REPORT.md`](./docs/AI_ENGINEERING_DEEP_TECHNICAL_REPORT.md) | Full systems-engineering report: modules, state machine, RAG mathematics, memory tiers, Arabic NLP, LLMOps |
-| [`docs/ARCHITECTURE_DEEP_DIVE.md`](./docs/ARCHITECTURE_DEEP_DIVE.md) | Data-journey diagrams from ingestion to observability |
-| [`docs/llmops.md`](./docs/llmops.md) | Telemetry dictionary, log envelope, metrics, PII handling, retention |
-| [`docs/runbook.md`](./docs/runbook.md) | Operations, incident response, fabricated-citation escalation |
-| [`docs/challenges.md`](./docs/challenges.md) | Review-board findings and accepted decisions |
-| [`docs/adr/010-llmops-stack.md`](./docs/adr/010-llmops-stack.md) | LLMOps stack selection |
-| [`docs/adr/011-langmem-feedback.md`](./docs/adr/011-langmem-feedback.md) | Native LangMem-compatible feedback memory and the no-poison invariant |
-| [`docs/adr/012-eval-gates-ci.md`](./docs/adr/012-eval-gates-ci.md) | Evaluation gates in CI |
-| [`docs/visuals/`](./docs/visuals) | Standalone interactive architecture diagrams (AI architecture, stack, data flow, sequence, lifecycle, deep workflow) |
-| [`.memory/known_constraints.md`](./.memory/known_constraints.md) | Ground-truth architectural invariants |
-| [`.memory/technical_debt.md`](./.memory/technical_debt.md) | Tracked debt (AI-relevant items TD-12 through TD-16) |
+| [`.memory/known_constraints.md`](./.memory/known_constraints.md) | Ground-truth architectural invariants (never fabricate law, offline-first, Secure-0) |
+| [`.memory/architecture_decisions.md`](./.memory/architecture_decisions.md) | ADR index (ADR-001 through ADR-004) |
+| [`evaluation/README.md`](./evaluation/README.md) | Offline evaluation suite: metric definitions, thresholds, and report format |
+| [`legalassist-ai/REVIEW.md`](./legalassist-ai/REVIEW.md) | Python sidecar packaging review: what was verified and what was not executed |
+| [`docs/superpowers/specs/`](./docs/superpowers/specs/) | Extraction design spec: inclusion boundary, caveats, verification gates |
 
 ---
 
