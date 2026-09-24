@@ -1,6 +1,6 @@
-# ⚖️ HAKMDAR Egyptian Legal AI — Offline Evaluation Suite
+# ⚖️ Arabic Law RAG Egyptian Legal AI — Offline Evaluation Suite
 
-Offline evaluation suite for the **HAKMDAR (حِكِمْدار)** Egyptian Legal AI platform. It evaluates safety classification, Egyptian colloquial phrase mapping, legal evidence retrieval, citation verification, and disclaimer enforcement across **57 curated scenarios** covering core Egyptian legal domains and out-of-domain (OOD) controls.
+Offline evaluation suite for the **Arabic Law RAG** Egyptian Legal AI platform. It evaluates safety classification, Egyptian colloquial phrase mapping, legal evidence retrieval, citation verification, and disclaimer enforcement across **57 curated scenarios** covering core Egyptian legal domains and out-of-domain (OOD) controls.
 
 ---
 

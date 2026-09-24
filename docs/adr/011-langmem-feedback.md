@@ -7,7 +7,7 @@ Accepted
 2026-09-15
 
 ## Context
-The HAKMDAR legal AI platform serves both lay clients (`chat_fast`) and licensed Egyptian attorneys (`case_deep`). In legal workflows, attorney corrections and client ratings provide valuable signals for iterative system improvement. However, in the legal domain, incorporating user and attorney feedback into model memory carries profound risks:
+The Arabic Law RAG legal AI platform serves both lay clients (`chat_fast`) and licensed Egyptian attorneys (`case_deep`). In legal workflows, attorney corrections and client ratings provide valuable signals for iterative system improvement. However, in the legal domain, incorporating user and attorney feedback into model memory carries profound risks:
 1. **Corpus Poisoning Risk**: If unverified user corrections or model outputs are allowed to modify statutory legal knowledge, the system risks hallucinating non-existent articles, altered penalty terms, or overturned precedents.
 2. **Operational Complexity**: External memory SaaS services introduce privacy concerns regarding attorney-client privilege, external cloud dependencies, and failure modes when operating offline.
 3. **Developer Velocity**: In local development and automated CI pipelines, the memory layer must function deterministically without requiring external API keys or complex Python-only runtimes.

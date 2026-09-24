@@ -63,14 +63,14 @@ describe('Phase 1: Secure-0 Middleware Route Protection', () => {
     process.env = { ...originalEnv };
   });
 
-  it('sets x-hakmdar-demo-mode header when Supabase credentials are missing or placeholder', async () => {
+  it('sets x-arabic-law-rag-demo-mode header when Supabase credentials are missing or placeholder', async () => {
     delete process.env.NEXT_PUBLIC_SUPABASE_URL;
     delete process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
     const req = new NextRequest('http://localhost:3000/lawyer/dashboard');
     const res = await middleware(req);
 
-    expect(res.headers.get('x-hakmdar-demo-mode')).toBe('1');
+    expect(res.headers.get('x-arabic-law-rag-demo-mode')).toBe('1');
     expect(res.status).toBe(200);
   });
 

@@ -68,7 +68,7 @@ export interface EvalReport {
 }
 
 /**
- * Runs the real HAKMDAR pipeline on a single evaluation scenario.
+ * Runs the real Arabic Law RAG pipeline on a single evaluation scenario.
  */
 export async function executeScenarioPipeline(scenario: EvalScenario): Promise<{
   run_output: EvalRunOutput;
@@ -442,7 +442,7 @@ export function formatMarkdownReport(report: EvalReport): string {
   const { suite, started_at, git_sha, gate, aggregates, results } = report;
 
   const lines: string[] = [];
-  lines.push(`# HAKMDAR Evaluation Report: ${suite.toUpperCase()}`);
+  lines.push(`# Arabic Law RAG Evaluation Report: ${suite.toUpperCase()}`);
   lines.push('');
   lines.push(`- **Date**: ${started_at}`);
   lines.push(`- **Git Commit**: \`${git_sha}\``);
@@ -624,7 +624,7 @@ export async function runSuite(
   }
 
   if (!options.silent) {
-    console.log(`\n================== HAKMDAR EVALUATION (${suiteName}) ==================`);
+    console.log(`\n================== Arabic Law RAG EVALUATION (${suiteName}) ==================`);
     console.log(`Gate Profile: ${gateProfile} | Status: ${gate.passed ? 'PASSED ✅' : 'FAILED ❌'}`);
     console.log(`Cases: ${aggregates.total_cases} (${aggregates.legal_cases_count} legal, ${aggregates.ood_cases_count} OOD)`);
     console.log(`OOD Refuse Rate: ${(aggregates.ood_refuse_rate * 100).toFixed(1)}%`);

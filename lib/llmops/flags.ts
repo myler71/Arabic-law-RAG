@@ -1,5 +1,5 @@
 /**
- * HAKMDAR LLMOps Feature Flags (Spec L7.2)
+ * Arabic Law RAG LLMOps Feature Flags (Spec L7.2)
  *
  * Operational toggles for controlling AI features across environments.
  * All flags default to OFF (false).

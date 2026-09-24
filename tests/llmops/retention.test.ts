@@ -10,7 +10,7 @@ describe('LLMOps Retention Engine (retention.ts)', () => {
   let reportsDir: string;
 
   beforeEach(async () => {
-    tempDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'hakmdar-retention-test-'));
+    tempDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'arabic-law-rag-retention-test-'));
     llmopsDir = path.join(tempDir, '.llmops');
     reportsDir = path.join(tempDir, 'evaluation', 'reports');
 

@@ -55,7 +55,7 @@ export class FeedbackStore {
       url &&
         key &&
         !url.includes('placeholder') &&
-        !url.includes('hakmdar-demo')
+        !url.includes('arabic-law-rag-demo')
     );
   }
 

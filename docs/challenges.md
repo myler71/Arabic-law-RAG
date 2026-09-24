@@ -1,4 +1,4 @@
-# HAKMDAR Review Board: Active & Resolved Challenges
+# Arabic Law RAG Review Board: Active & Resolved Challenges
 
 ## 🔥 CHALLENGE 01 — Unauthenticated AI Routes & Mock Keyword Simulation
 **Severity:** Blocker  

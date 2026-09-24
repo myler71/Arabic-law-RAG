@@ -221,8 +221,6 @@ export function loadLegalKnowledgeBase(): LegalChunk[] {
     path.join(process.cwd(), 'lib/ai/knowledge/egyptian-labor-law.json'),
     path.join(__dirname, 'knowledge/egyptian-labor-law.json'),
     path.join(__dirname, '../../lib/ai/knowledge/egyptian-labor-law.json'),
-    'C:/Users/Myler/Downloads/1 PROJECTS/hakimdar/HAKMDAR/lib/ai/knowledge/egyptian-labor-law.json',
-    'C:/Users/Myler/Downloads/1 PROJECTS/HAKMDAR/lib/ai/knowledge/egyptian-labor-law.json',
   ];
 
   for (const jsonPath of possibleJsonPaths) {

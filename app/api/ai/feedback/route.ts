@@ -28,7 +28,7 @@ async function resolveUser(req: NextRequest): Promise<AuthResult> {
     supabaseUrl &&
       supabaseAnonKey &&
       !supabaseUrl.includes('placeholder') &&
-      !supabaseUrl.includes('hakmdar-demo')
+      !supabaseUrl.includes('arabic-law-rag-demo')
   );
 
   let user: AuthUser | null = null;
@@ -81,7 +81,7 @@ async function resolveUser(req: NextRequest): Promise<AuthResult> {
     }
 
     if (!user) {
-      user = { id: 'demo-user', email: 'demo@hakmdar.local', role: 'client' };
+      user = { id: 'demo-user', email: 'demo@arabic-law-rag.local', role: 'client' };
     }
   }
 

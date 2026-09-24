@@ -154,7 +154,7 @@ describe('LLMOps Tracing & Metrics Suite', () => {
         }
       );
 
-      expect(root.name).toBe('hakmdar.ai.run');
+      expect(root.name).toBe('arabic-law-rag.ai.run');
       expect(root.parentId).toBeNull();
       expect(root.attributes.mode).toBe('chat_fast');
       expect(root.attributes.persona).toBe('client');
@@ -170,7 +170,7 @@ describe('LLMOps Tracing & Metrics Suite', () => {
 
     it('spanChatFast builds the complete chat_fast span tree', () => {
       const tree = spanChatFast();
-      expect(tree.root.name).toBe('hakmdar.ai.run');
+      expect(tree.root.name).toBe('arabic-law-rag.ai.run');
 
       const sAuth = tree.auth({ user: 'anon' });
       const sGuardPre = tree.guardPre({ input_len: 25 });
@@ -216,7 +216,7 @@ describe('LLMOps Tracing & Metrics Suite', () => {
 
     it('spanCaseDeep builds the complete case_deep span tree', () => {
       const tree = spanCaseDeep();
-      expect(tree.root.name).toBe('hakmdar.ai.run');
+      expect(tree.root.name).toBe('arabic-law-rag.ai.run');
 
       const sGuardPre = tree.guardPre();
       const sRetrieve = tree.retrieve();

@@ -1,4 +1,4 @@
-# HAKMDAR AI Stack — Architecture & Design Deep Dive
+# Arabic Law RAG AI Stack — Architecture & Design Deep Dive
 **Companion to:** `docs/SESSION_RECAP_2026-09-15.md`
 **Format:** Mermaid diagrams + stage-by-stage specifications
 **Scope:** The complete data journey — upload → parse → index → retrieve → guard → generate → stream → feedback → memory → evaluate → observe → improve (the closed iteration loop)

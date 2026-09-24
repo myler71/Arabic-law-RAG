@@ -396,7 +396,7 @@ export async function runEvaluation(scenariosPath?: string): Promise<EvaluationR
  * Generates human-readable Markdown evaluation report summary.
  */
 export function generateMarkdownReport(report: EvaluationReport): string {
-  let md = `# ⚖️ HAKMDAR Egyptian Legal AI — Offline Evaluation Report\n\n`;
+  let md = `# ⚖️ Arabic Law RAG Egyptian Legal AI — Offline Evaluation Report\n\n`;
   md += `- **Generated:** ${report.timestamp}\n`;
   md += `- **Total Scenarios Evaluated:** ${report.total} (Legal: ${report.legal_scenarios_count}, OOD Controls: ${report.ood_scenarios_count})\n`;
   md += `- **Overall Suite Status:** ${report.passed ? '✅ **PASSED ALL THRESHOLDS**' : '❌ **FAILED THRESHOLDS**'}\n\n`;
@@ -434,13 +434,13 @@ export function generateMarkdownReport(report: EvaluationReport): string {
     }
   }
 
-  md += `\n---\n*Report generated automatically by HAKMDAR Offline Evaluation Suite.*\n`;
+  md += `\n---\n*Report generated automatically by Arabic Law RAG Offline Evaluation Suite.*\n`;
   return md;
 }
 
 // CLI entry point
 if (require.main === module || process.argv[1]?.endsWith('runner.ts')) {
-  console.log('🚀 Starting HAKMDAR Egyptian Legal AI Offline Evaluation Suite...\n');
+  console.log('🚀 Starting Arabic Law RAG Egyptian Legal AI Offline Evaluation Suite...\n');
   runEvaluation()
     .then((report) => {
       console.log('📊 Evaluation Results Summary:');

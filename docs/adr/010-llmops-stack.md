@@ -7,7 +7,7 @@ Accepted
 2026-09-15
 
 ## Context
-The HAKMDAR platform provides bilingual (Arabic/English) legal AI assistance in Egypt, serving both lay clients (`chat_fast`) and licensed attorneys (`case_deep`). Production-grade reliability, compliance with Egyptian legal data sovereignty, strict PII redaction (national ID, phone numbers), citation verification, and latency guarantees require a cohesive observability and telemetry architecture.
+The Arabic Law RAG platform provides bilingual (Arabic/English) legal AI assistance in Egypt, serving both lay clients (`chat_fast`) and licensed attorneys (`case_deep`). Production-grade reliability, compliance with Egyptian legal data sovereignty, strict PII redaction (national ID, phone numbers), citation verification, and latency guarantees require a cohesive observability and telemetry architecture.
 
 Specifically, the system requires:
 1. **Tracing**: Span hierarchies representing multi-step agent graphs, RAG retrievals, guard evaluations, and streaming token generation.
@@ -28,7 +28,7 @@ We implement an **Adapter Pattern** with composite dispatch (`lib/llmops/tracing
 #### Span Tree Conventions
 - **`chat_fast`**:
   ```text
-  hakmdar.ai.run
+  arabic-law-rag.ai.run
   ├── ai.auth
   ├── ai.guard_pre
   ├── ai.retrieve (dense, bm25, rrf, rerank)
@@ -39,7 +39,7 @@ We implement an **Adapter Pattern** with composite dispatch (`lib/llmops/tracing
   ```
 - **`case_deep`**:
   ```text
-  hakmdar.ai.run
+  arabic-law-rag.ai.run
   ├── ai.guard_pre
   ├── ai.retrieve
   ├── ai.graph.statutory | cassation | procedural | contract

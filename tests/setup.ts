@@ -1,5 +1,5 @@
 /**
- * Vitest Global Test Setup for HAKMDAR
+ * Vitest Global Test Setup for Arabic Law RAG
  *
  * Polyfills native WebSocket in environments where it is missing (e.g. Node 20 on CI)
  * to ensure @supabase/realtime-js and @supabase/ssr run cleanly without warnings or errors.

@@ -129,13 +129,13 @@ async function flushOtlpMetrics(): Promise<void> {
       {
         resource: {
           attributes: [
-            { key: 'service.name', value: { stringValue: 'hakmdar-next' } },
+            { key: 'service.name', value: { stringValue: 'arabic-law-rag' } },
             { key: 'service.version', value: { stringValue: process.env.APP_GIT_SHA ?? 'dev' } },
           ],
         },
         scopeMetrics: [
           {
-            scope: { name: 'hakmdar.llmops' },
+            scope: { name: 'arabic-law-rag.llmops' },
             metrics: items.map((item) => ({
               name: item.name,
               data:

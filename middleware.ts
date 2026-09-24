@@ -2,7 +2,7 @@ import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 
 /**
- * Next.js Edge Middleware for HAKMDAR
+ * Next.js Edge Middleware for Arabic Law RAG
  *
  * Enforces session management, tenant & portal route protection,
  * and seamless fallback for local offline / demo execution.
@@ -28,13 +28,13 @@ export async function middleware(request: NextRequest) {
     supabaseUrl &&
     supabaseAnonKey &&
     !supabaseUrl.includes('placeholder') &&
-    !supabaseUrl.includes('hakmdar-demo')
+    !supabaseUrl.includes('arabic-law-rag-demo')
   );
 
   // 3. Offline / Demo execution fallback: allow access with demo banner header
   if (!isConfigured) {
     const response = NextResponse.next();
-    response.headers.set('x-hakmdar-demo-mode', '1');
+    response.headers.set('x-arabic-law-rag-demo-mode', '1');
     return response;
   }
 

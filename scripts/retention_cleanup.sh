@@ -2,7 +2,7 @@
 set -eu
 
 # ==============================================================================
-# HAKMDAR LLMOps: Retention Cleanup Script (Spec L3.7, L8.6)
+# Arabic Law RAG LLMOps: Retention Cleanup Script (Spec L3.7, L8.6)
 # ==============================================================================
 #
 # Prunes debug-level telemetry lines (.llmops/*.jsonl) and transient debug report
@@ -13,7 +13,7 @@ set -eu
 # Scheduling Hints:
 # -----------------
 # 1. Linux Crontab (daily at 03:00 UTC):
-#    0 3 * * * cd /path/to/HAKMDAR && ./scripts/retention_cleanup.sh --days 14 >> /var/log/hakmdar_retention.log 2>&1
+#    0 3 * * * cd /path/to/Arabic Law RAG && ./scripts/retention_cleanup.sh --days 14 >> /var/log/arabic-law-rag_retention.log 2>&1
 #
 # 2. Systemd Timer (alternative to cron):
 #    [Timer]
@@ -25,7 +25,7 @@ set -eu
 # ==============================================================================
 
 echo "=========================================================="
-echo "  HAKMDAR LLMOps: File Store Retention Cleanup"
+echo "  Arabic Law RAG LLMOps: File Store Retention Cleanup"
 echo "=========================================================="
 
 npx tsx lib/llmops/retention.ts "$@"

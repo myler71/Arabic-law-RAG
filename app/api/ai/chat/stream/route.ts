@@ -101,7 +101,7 @@ function generateGroundedAnswer(
 ): { text: string; isDisclaimer: boolean } {
   if (!evidence || evidence.length === 0) {
     return {
-      text: `بناءً على الفحص الأولي، لم يتم العثور على نص تشريعي صريح أو سابقة قضائية مطابقة في قاعدة البيانات للواقعة المعروضة.\n\n⚖️ **إخلاء مسؤولية استشارية**:\nوفقاً لمبادئ المستشار القانوني حِكِمْدار، وحرصاً على عدم تقديم تأويل قانوني غير مدعم بنص تشريعي دقيق، يُرجى تزويدنا بمزيد من التفاصيل والوقائع أو مراجعة محامٍ مختص لبحث أوراق النزاع حضورياً.`,
+      text: `بناءً على الفحص الأولي، لم يتم العثور على نص تشريعي صريح أو سابقة قضائية مطابقة في قاعدة البيانات للواقعة المعروضة.\n\n⚖️ **إخلاء مسؤولية استشارية**:\nوفقاً لمبادئ المستشار القانوني، وحرصاً على عدم تقديم تأويل قانوني غير مدعم بنص تشريعي دقيق، يُرجى تزويدنا بمزيد من التفاصيل والوقائع أو مراجعة محامٍ مختص لبحث أوراق النزاع حضورياً.`,
       isDisclaimer: true,
     };
   }
@@ -302,7 +302,7 @@ export async function POST(req: NextRequest) {
           supabaseUrl &&
             supabaseAnonKey &&
             !supabaseUrl.includes('placeholder') &&
-            !supabaseUrl.includes('hakmdar-demo')
+            !supabaseUrl.includes('arabic-law-rag-demo')
         );
 
         if (credentialsExist) {

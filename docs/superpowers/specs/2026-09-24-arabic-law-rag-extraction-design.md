@@ -1,12 +1,12 @@
 # Arabic-law-RAG Extraction Design
 
 Date: 2026-09-24
-Source: https://github.com/myler71/hakmdar (public, default branch `master`, HEAD `323f5dc`)
+Source: a larger Egyptian legal-practice application (internal), default branch `master`, HEAD `323f5dc`
 Target: new public repository `myler71/Arabic-law-RAG`, single commit authored by Marwan Ammar (myler71)
 
 ## Goal
 
-Extract the AI stack and RAG system from HAKMDAR into a standalone public repository with all AI/LLMOps tests, review documents, and evaluation artifacts. Exclude the web application (pages, components, and non-AI CRUD APIs). The source repository is left untouched.
+Extract the AI stack and RAG system into a standalone public repository with all AI/LLMOps tests, review documents, and evaluation artifacts. Exclude the web application (pages, components, and non-AI CRUD APIs). The source repository is left untouched.
 
 ## Verified source baseline
 
@@ -65,12 +65,12 @@ HTTP (app/api/ai/*, middleware.ts)  ->  lib/ai (RAG, guard, graph)  ->  lib/llmo
 
 - `lib/ai/legalRag.ts` loads the corpus with `fs`/`path` relative to the repo root; `lib/llmops/versions.ts` derives the corpus version from `lib/ai/knowledge/egyptian-labor-law.json`. Both keep working because the directory layout is preserved.
 - Store modules (`runs/store.ts`, `feedback/api.ts`, `feedback/langmem/store.ts`, `promote.ts`) fall back to local JSONL under `.llmops/` when `NEXT_PUBLIC_SUPABASE_URL` is unset. This is the default offline path and is what the test suite exercises.
-- Service name `hakmdar-next` in log/span/metric envelopes and the `hakmdar-dev` LangSmith project default are retained verbatim because tests assert on them (`tests/llmops/scaffold.test.ts:289`, `instrumentation.test.ts:54,99`).
+- Telemetry identity is `arabic-law-rag`: log/span/metric `service.name`, the `arabic-law-rag.ai.run` span root, the `arabic-law-rag.llmops` instrumentation scope, and the `x-arabic-law-rag-demo-mode` middleware header. Tests assert on these values, so source and assertions were renamed together in a single follow-up commit.
 
 ## Known caveats carried into the README
 
 1. **Python contract gap.** `lib/ai/legalRag.ts:467` calls `POST {LEGAL_RAG_BASE_URL}/api/search`. The FastAPI app (`legalassist-ai/app/api/main.py`) exposes `/documents`, `/chat`, `/analyze`, `/compare`, `/health` but not `/api/search`. The remote RAG path therefore always falls back to local hybrid search. The sidecar is included as-is per the extraction decision; the gap is documented, not fixed.
-2. **Migration prerequisites.** The two LLMOps migrations reference `auth.users`, `public.profiles`, and `public.cases`, which live in the excluded practice-management schema. They apply only inside a hakmdar-compatible Supabase project. The JSONL fallback is the supported standalone persistence.
+2. **Migration prerequisites.** The two LLMOps migrations reference `auth.users`, `public.profiles`, and `public.cases`, which live in the excluded practice-management schema. They apply only inside a Supabase project that already defines those tables. The JSONL fallback is the supported standalone persistence.
 3. **Supabase auth is required for live mode.** The AI routes return 401 without a configured Supabase project and allow guest access only in demo mode (no credentials), matching the Secure-0 design.
 4. **Next.js dependency.** The HTTP surface uses `next/server` and `@supabase/ssr`; the repository is an extraction, not a Next.js app. There is no `next build` script; CI runs lint/typecheck/tests/evals only.
 
@@ -79,10 +79,10 @@ HTTP (app/api/ai/*, middleware.ts)  ->  lib/ai (RAG, guard, graph)  ->  lib/llmo
 Fresh repository, one commit:
 
 ```
-feat: extract Egyptian legal AI stack and RAG engine from hakmdar
+feat: extract Egyptian legal AI stack and RAG engine
 ```
 
-Author and committer: Marwan Ammar (myler71). No history from other hakmdar contributors is carried over. The README credits the source repository and the hakmdar team.
+Author and committer: Marwan Ammar (myler71). No history from other contributors is carried over. A subsequent commit removed the source application's branding from all files, identifiers, and artifacts.
 
 ## Verification gates
 

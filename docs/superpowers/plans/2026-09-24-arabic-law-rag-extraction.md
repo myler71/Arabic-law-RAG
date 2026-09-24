@@ -1,10 +1,12 @@
 # Arabic-law-RAG Extraction Implementation Plan
 
+> **Status:** completed and superseded. This plan records the original extraction, executed on 2026-09-24. The extraction constraint that the source application's telemetry identifiers be kept "verbatim" applied only until the follow-up commit that removed that branding from every file, identifier, and artifact. The branding-removal commit also rewrote the brand-pinned test assertions onto the policy contract they verify.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Extract the HAKMDAR AI stack and RAG system into the new public repository `myler71/Arabic-law-RAG` with a single commit authored by Marwan Ammar.
+**Goal:** Extract the AI stack and RAG system from the source application into the new public repository `myler71/Arabic-law-RAG` with a single commit authored by Marwan Ammar.
 
-**Architecture:** Fresh repository with a selected-path copy from the local `hakmdar-source` clone, then config/docs rewrites so the retained AI surface (lib/ai, lib/llmops, app/api/ai, middleware, evaluation, scripts, tests, docs, legalassist-ai minus UI) builds, typechecks, tests, and evaluates without the web app.
+**Architecture:** Fresh repository with a selected-path copy from a local clone of the source application, then config/docs rewrites so the retained AI surface (lib/ai, lib/llmops, app/api/ai, middleware, evaluation, scripts, tests, docs, legalassist-ai minus UI) builds, typechecks, tests, and evaluates without the web app.
 
 **Tech Stack:** TypeScript 5.7, Next.js 15 request/response types, Supabase SSR client, Zod, Vitest 4, tsx, Python 3.11 (pytest, FastAPI, FAISS/BM25/Ollama).
 
@@ -12,11 +14,11 @@
 
 ## Global Constraints
 
-- Source repository `C:/tmp/hakmdar-source` is read-only; do not modify or commit anything in it.
+- The source clone is read-only; do not modify or commit anything in it.
 - Target repository path: `C:/tmp/Arabic-law-RAG`; remote `myler71/Arabic-law-RAG` (public).
 - Exactly one commit, author and committer Marwan Ammar (myler71).
-- Keep `service: 'hakmdar-next'` and the `hakmdar-dev` LangSmith default verbatim; tests assert on them.
-- Keep `x-hakmdar-demo-mode` middleware header verbatim; `tests/api/security-zero.test.ts:73` asserts it.
+- Keep `service: 'arabic-law-rag'` and the `arabic-law-rag-dev` LangSmith default verbatim; tests assert on them.
+- Keep `x-arabic-law-rag-demo-mode` middleware header verbatim; `tests/api/security-zero.test.ts:73` asserts it.
 - Do not fix the Python `/api/search` gap; document it in the README.
 - No test file may be edited to make it pass; only drops are allowed for web-CRUD tests.
 
@@ -29,7 +31,7 @@
 - Copy: paths listed under "Keep" in the spec
 
 **Interfaces:**
-- Consumes: `C:/tmp/hakmdar-source` working tree at `323f5dc`
+- Consumes: `the source clone` working tree at `323f5dc`
 - Produces: untracked extraction tree plus spec and plan documents
 
 - [ ] **Step 1: Initialize the git repository**
@@ -39,7 +41,7 @@ Expected: `Initialized empty Git repository`
 
 - [ ] **Step 2: Copy retained paths**
 
-Copy from `C:/tmp/hakmdar-source`:
+Copy from `the source clone`:
 ```
 app/api/ai
 middleware.ts
@@ -77,12 +79,12 @@ docs/llmops-ci.yml
 docs/adr/010-llmops-stack.md
 docs/adr/011-langmem-feedback.md
 docs/adr/012-eval-gates-ci.md
-docs/visuals/hakmdar-ai-architecture.html
-docs/visuals/hakmdar-ai-dataflow.html
-docs/visuals/hakmdar-ai-lifecycle.html
-docs/visuals/hakmdar-ai-sequence.html
-docs/visuals/hakmdar-ai-stack.html
-docs/visuals/hakmdar-deep-workflow.html
+docs/visuals/arabic-law-rag-ai-architecture.html
+docs/visuals/arabic-law-rag-ai-dataflow.html
+docs/visuals/arabic-law-rag-ai-lifecycle.html
+docs/visuals/arabic-law-rag-ai-sequence.html
+docs/visuals/arabic-law-rag-ai-stack.html
+docs/visuals/arabic-law-rag-deep-workflow.html
 .memory/architecture_decisions.md
 .memory/known_constraints.md
 .memory/technical_debt.md
@@ -208,13 +210,13 @@ Keep dependency, test, build, env, LLMOps, and Python sections from the source `
 ```md
 # Arabic-law-RAG — Agent Instructions
 
-This repository is the AI/RAG extraction of [hakmdar](https://github.com/myler71/hakmdar). It is a library plus a thin Next.js route surface; it is not a deployable Next.js application (no pages, no `next build`).
+This repository is the AI/RAG extraction of [the source application](https://github.com/myler71/the source application). It is a library plus a thin Next.js route surface; it is not a deployable Next.js application (no pages, no `next build`).
 
 ## Ground rules
 
 - The corpus is authoritative codified law. Never fabricate article numbers; `lib/ai/safety/legalGuard.ts` is the enforcement point.
 - All core paths must run offline. Do not add required cloud calls to `lib/ai` or `lib/llmops`.
-- `service: 'hakmdar-next'` in log/span/metric envelopes and `x-hakmdar-demo-mode` in middleware are asserted by tests; do not rename without updating tests and the extraction spec.
+- `service: 'arabic-law-rag'` in log/span/metric envelopes and `x-arabic-law-rag-demo-mode` in middleware are asserted by tests; do not rename without updating tests and the extraction spec.
 - Do not add test files that assert implementation details (field copies, wiring, source text). Tests must assert observable behavior.
 - Run `npm test`, `npm run typecheck`, and `npm run eval` before claiming completion.
 
@@ -230,7 +232,7 @@ This repository is the AI/RAG extraction of [hakmdar](https://github.com/myler71
 
 - [ ] **Step 6: Write `README.md`**
 
-Sections: title and one-paragraph description; provenance (extracted from hakmdar at `323f5dc`, single commit, original team credited); what is included/excluded; architecture summary (dual-mode engine, guard, LLMOps); install and test commands; evaluation commands and thresholds; Python sidecar section including the `/api/search` gap; Supabase migrations caveat; legal disclaimer; license.
+Sections: title and one-paragraph description; provenance (extracted from the source application at `323f5dc`, single commit, original team credited); what is included/excluded; architecture summary (dual-mode engine, guard, LLMOps); install and test commands; evaluation commands and thresholds; Python sidecar section including the `/api/search` gap; Supabase migrations caveat; legal disclaimer; license.
 
 - [ ] **Step 7: Update `.github/workflows/llmops-ci.yml`**
 
@@ -273,7 +275,7 @@ Expected: only placeholders and test fixtures.
 
 - [ ] **Step 1: Stage and commit**
 
-Run: `git add -A && git commit -m "feat: extract Egyptian legal AI stack and RAG engine from hakmdar"`
+Run: `git add -A && git commit -m "feat: extract Egyptian legal AI stack and RAG engine from the source application"`
 Expected: one commit, author Marwan Ammar.
 
 - [ ] **Step 2: Create the public repository and push**

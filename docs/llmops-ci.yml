@@ -1,4 +1,4 @@
-name: HAKMDAR LLMOps CI
+name: Arabic Law RAG LLMOps CI
 
 on:
   pull_request:

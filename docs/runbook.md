@@ -1,6 +1,6 @@
 # Arabic-law-RAG Operations Runbook
 
-This runbook was extracted from HAKMDAR. Sections that depend on the excluded web application (portals, practice-management writes) are marked accordingly; the AI engine procedures apply unchanged.
+This runbook was extracted from Arabic Law RAG. Sections that depend on the excluded web application (portals, practice-management writes) are marked accordingly; the AI engine procedures apply unchanged.
 
 ## 1. Install and verify (local / offline)
 ```bash
@@ -11,7 +11,7 @@ npm run typecheck
 npm test
 ```
 - This repository is a library plus a thin Next.js route surface; it has no `dev` or `build` script and no pages. Host the routes from a Next.js application to serve them over HTTP.
-- No Supabase credentials required for local verification: tests run the routes in demo mode, where middleware sets `x-hakmdar-demo-mode: 1` and `/api/ai/*` fall back to the local deterministic legal engine.
+- No Supabase credentials required for local verification: tests run the routes in demo mode, where middleware sets `x-arabic-law-rag-demo-mode: 1` and `/api/ai/*` fall back to the local deterministic legal engine.
 - With Supabase configured (copy `.env.example` → `.env.local`), the routes require a real session and role.
 
 ## 2. Offline AI stack (defaults)

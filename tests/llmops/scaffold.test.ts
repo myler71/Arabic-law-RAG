@@ -286,7 +286,7 @@ describe('LLMOps Foundations Scaffold', () => {
       const parsed = JSON.parse(line);
       expect(parsed.event).toBe('ai.request.start');
       expect(parsed.level).toBe('info');
-      expect(parsed.service).toBe('hakmdar-next');
+      expect(parsed.service).toBe('arabic-law-rag');
       expect(parsed.trace_id).toBe(traceId);
       expect(parsed.run_id).toBe(runId);
       expect(parsed.persona).toBe('client');

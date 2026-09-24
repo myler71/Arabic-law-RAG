@@ -155,7 +155,7 @@ describe('HKM-AI-01: SSE Streaming Route Handler (/api/ai/chat/stream)', () => {
       const tokenEvents = events.filter((e) => e.event === 'token');
       expect(tokenEvents.length).toBeGreaterThan(0);
       const fullText = tokenEvents.map((e) => JSON.parse(e.data).text).join('');
-      expect(fullText).toContain('المستشار القانوني حِكِمْدار');
+      expect(fullText).toContain('الاستفسارات القانونية');
 
       // Verify done event
       const doneEvent = events.find((e) => e.event === 'done');

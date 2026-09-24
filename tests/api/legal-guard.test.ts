@@ -83,7 +83,7 @@ describe('HKM-AI-02: Legal Domain Guard & Citation Protection', () => {
       expect(result.mapped_legal_concepts).toEqual([]);
       expect(result.applicable_laws).toEqual([]);
       expect(result.confidence).toBe(0);
-      expect(result.reject_reason).toContain('حِكِمْدار');
+      expect(result.reject_reason).toContain('الاستفسارات القانونية');
       expect(result.clarification_question).toBeNull();
     });
 
@@ -294,7 +294,7 @@ describe('HKM-AI-02: Legal Domain Guard & Citation Protection', () => {
       expect(res.status).toBe(200);
       const body = await res.json();
 
-      expect(body.reply).toContain('حِكِمْدار');
+      expect(body.reply).toContain('الاستفسارات القانونية');
       expect(body.citations).toEqual([]);
       expect(body.caseBriefReady).toBe(false);
     });
@@ -310,7 +310,7 @@ describe('HKM-AI-02: Legal Domain Guard & Citation Protection', () => {
       expect(res.status).toBe(200);
       const body = await res.json();
 
-      expect(body.reply).toContain('حِكِمْدار');
+      expect(body.reply).toContain('الاستفسارات القانونية');
       expect(body.citations).toEqual([]);
       expect(body.caseBriefReady).toBe(false);
     });

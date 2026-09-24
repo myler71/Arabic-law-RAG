@@ -24,7 +24,7 @@ export interface StandardSpanAttributes {
 }
 
 /**
- * Root span helper: initiates the 'hakmdar.ai.run' trace root.
+ * Root span helper: initiates the 'arabic-law-rag.ai.run' trace root.
  * Populates all minimum required spec L4.1 attributes from active context and version registry.
  */
 export function startRunSpan(
@@ -61,7 +61,7 @@ export function startRunSpan(
     ...(attrs ?? {}),
   };
 
-  const span = t.startSpan('hakmdar.ai.run', standardAttrs, null);
+  const span = t.startSpan('arabic-law-rag.ai.run', standardAttrs, null);
   updateLlmOpsContext({ span_id: span.id, mode: mode as LlmOpsMode });
   return span;
 }
@@ -91,7 +91,7 @@ export interface ChatFastSpanTree {
 
 /**
  * Convenience builder for the chat_fast span tree:
- * hakmdar.ai.run
+ * arabic-law-rag.ai.run
  * ├─ ai.auth
  * ├─ ai.guard_pre
  * ├─ ai.retrieve [.dense/.bm25/.rrf/.rerank child attrs]
@@ -159,7 +159,7 @@ export interface CaseDeepSpanTree {
 
 /**
  * Convenience builder for the case_deep span tree:
- * hakmdar.ai.run
+ * arabic-law-rag.ai.run
  * ├─ ai.guard_pre
  * ├─ ai.retrieve
  * ├─ ai.graph.statutory|cassation|procedural|contract

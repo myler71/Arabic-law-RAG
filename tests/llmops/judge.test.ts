@@ -356,7 +356,7 @@ describe('Groq LLM-as-Judge & Quality Gates (judge.test.ts)', () => {
     let tmpDir: string;
 
     beforeEach(() => {
-      tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'hakmdar-eval-compare-'));
+      tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'arabic-law-rag-eval-compare-'));
     });
 
     afterEach(() => {

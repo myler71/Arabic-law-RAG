@@ -1,4 +1,4 @@
-# HAKMDAR Known Constraints & Ground Truth Facts
+# Arabic Law RAG Known Constraints & Ground Truth Facts
 
 ## Core Laws & Architectural Truth
 1. **Never fabricate law**: Article numbers, law titles, and court citations must be grounded in verified retrieval chunks.

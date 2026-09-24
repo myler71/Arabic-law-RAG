@@ -1,6 +1,6 @@
-# HAKMDAR Sovereign Legal AI Platform — Deep Technical Architecture & Systems Engineering Report
+# Arabic Law RAG Sovereign Legal AI Platform — Deep Technical Architecture & Systems Engineering Report
 **Author / Architectural Authority:** Principal AI Systems Engineer  
-**Target Application:** HAKMDAR (حِكِمْدار) — Egyptian Legal Practice Management & Sovereign AI Engine  
+**Target Application:** Arabic Law RAG — Egyptian Legal Practice Management & Sovereign AI Engine  
 **Classification:** Technical Architecture & Systems Engineering Deep Dive  
 **Version:** 2.0-PRODUCTION-CORE  
 
@@ -8,7 +8,7 @@
 
 ## 0. Executive Technical Summary & Core Invariants
 
-HAKMDAR is an enterprise-grade legal engineering platform built to solve the **Legal Liability Paradox**: in generative AI, ungrounded token generation is termed "creativity"; in the legal and judicial domain, **hallucination is professional malpractice and a breach of civil procedure**.
+Arabic Law RAG is an enterprise-grade legal engineering platform built to solve the **Legal Liability Paradox**: in generative AI, ungrounded token generation is termed "creativity"; in the legal and judicial domain, **hallucination is professional malpractice and a breach of civil procedure**.
 
 The platform is designed around five non-negotiable architectural invariants:
 1. **Zero Legal Fabrication (Anti-Hallucination Invariant):** The system will not assert statutory provisions, article numbers, or court precedents unless they exist in the verified, retrieved statutory corpus. Citations are bound by deterministic string matching and metadata validation—never by LLM inference alone.
@@ -33,7 +33,7 @@ The platform is designed around five non-negotiable architectural invariants:
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
 │                                EDGE MIDDLEWARE (middleware.ts)                         │
 │  • Supabase SSR Session Refresh           • Role-Based Access Control (Lawyer / Client)│
-│  • Public Route Exemptions                • Offline Demo Bypass (x-hakmdar-demo-mode)  │
+│  • Public Route Exemptions                • Offline Demo Bypass (x-arabic-law-rag-demo-mode)  │
 └───────────────────────────────────────────┬────────────────────────────────────────────┘
                                             │ Authenticated Request Context
                                             ▼
@@ -238,7 +238,7 @@ The platform is designed around five non-negotiable architectural invariants:
 
 A foundational architectural flaw in many generative AI applications is the **Unified Pipeline Fallacy**—attempting to route casual consumer queries and complex professional reasoning through the exact same agentic pipeline. 
 
-HAKMDAR solves this through an explicit, code-level segregation into **Mode A (`chat_fast`)** and **Mode B (`case_deep`)**:
+Arabic Law RAG solves this through an explicit, code-level segregation into **Mode A (`chat_fast`)** and **Mode B (`case_deep`)**:
 
 ```
                                   [Incoming Request]
@@ -375,7 +375,7 @@ Where:
 
 ## 3. How the AI System Connects to the Legal Dataset (Data Engineering & Runtime Ingestion)
 
-An AI system is only as reliable as its connection to statutory ground truth. HAKMDAR connects to its legal knowledge through an **in-process, air-gapped, multi-tier data pipeline**:
+An AI system is only as reliable as its connection to statutory ground truth. Arabic Law RAG connects to its legal knowledge through an **in-process, air-gapped, multi-tier data pipeline**:
 
 ```
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
@@ -521,11 +521,11 @@ When users upload new PDFs, DOCX contracts, or scanned court papers:
 
 ## 4. Technology Selection Rationale: LangGraph, LangMem, and LLMOps
 
-Every technology selected for HAKMDAR was evaluated against strict systems engineering criteria. We rejected common industry defaults that fail under mission-critical legal constraints.
+Every technology selected for Arabic Law RAG was evaluated against strict systems engineering criteria. We rejected common industry defaults that fail under mission-critical legal constraints.
 
 ### 4.1 Why LangGraph? (vs. LangChain Chains, LlamaIndex, or AutoGen)
 
-| Architectural Requirement | Naive Chains / ReAct Loops | AutoGen / CrewAI | **LangGraph (HAKMDAR Selection)** |
+| Architectural Requirement | Naive Chains / ReAct Loops | AutoGen / CrewAI | **LangGraph (Arabic Law RAG Selection)** |
 | :--- | :--- | :--- | :--- |
 | **State Persistence Across HTTP Boundaries** | Fails. Chains run ephemerally in memory. | Difficult. Conversational state is implicit in message lists. | **Native.** First-class `checkpointStore` persists exact state snapshots between analyze and review requests. |
 | **Deterministic Execution Guarantees** | Non-deterministic. ReAct agents often loop unpredictably. | Unpredictable agent chatter and token explosions. | **Deterministic State Machine.** Transitions follow strict topological rules defined in `LegalGraphState`. |
@@ -533,7 +533,7 @@ Every technology selected for HAKMDAR was evaluated against strict systems engin
 | **Inspection & Auditability** | Black box string logging. | Unstructured inter-agent message logs. | **Exact Node Tracing.** Every specialist emits discrete findings tagged with verified `chunk_ids`. |
 
 **Engineering Rationale:**  
-Legal defense brief drafting cannot be entrusted to an unconstrained agentic loop where agents "debate" each other. A court submission requires an exact sequence: classification $\rightarrow$ statutory retrieval $\rightarrow$ precedent correlation $\rightarrow$ procedural deadline validation $\rightarrow$ synthesis $\rightarrow$ **attorney sign-off**. LangGraph provides the mathematical formalization of a directed state graph with state schema validation, making it the only enterprise-ready choice for HAKMDAR's `case_deep` engine.
+Legal defense brief drafting cannot be entrusted to an unconstrained agentic loop where agents "debate" each other. A court submission requires an exact sequence: classification $\rightarrow$ statutory retrieval $\rightarrow$ precedent correlation $\rightarrow$ procedural deadline validation $\rightarrow$ synthesis $\rightarrow$ **attorney sign-off**. LangGraph provides the mathematical formalization of a directed state graph with state schema validation, making it the only enterprise-ready choice for Arabic Law RAG's `case_deep` engine.
 
 ---
 
@@ -545,7 +545,7 @@ In consumer applications, memory is implemented by dumping past chat messages in
 2. **Context Contamination:** Legal rules change across jurisdictions, case types, and lawyer seniority. Blending all past messages creates semantic noise.
 
 **The LangMem Tiered Architecture Solution:**  
-HAKMDAR implements a native, Supabase-backed, LangMem-compatible memory engine (`lib/llmops/feedback/langmem/`) governed by the **No-Poisoning Wall**:
+Arabic Law RAG implements a native, Supabase-backed, LangMem-compatible memory engine (`lib/llmops/feedback/langmem/`) governed by the **No-Poisoning Wall**:
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -585,7 +585,7 @@ Integrating an LLM without an industrial LLMOps control plane is software engine
 - *Did our prompt revision increase citation precision or introduce subtle hallucinations?*
 - *Are client National IDs leaking into external cloud logs?*
 
-HAKMDAR's LLMOps layer (`lib/llmops/`) guarantees:
+Arabic Law RAG's LLMOps layer (`lib/llmops/`) guarantees:
 1. **Cryptographic Correlation:** Every run links `trace_id`, `run_id`, `prompt_version`, `model_id`, `rag_index_version`, and `git_sha`.
 2. **Deterministic Quality Gates:** Pull requests cannot merge without passing automated offline evaluations asserting zero fabricated citations and 100% out-of-domain rejection.
 3. **Automated Data Privacy:** Regex-based PII redaction masks National IDs, Egyptian mobile numbers, and auth headers before log serialization.
@@ -594,7 +594,7 @@ HAKMDAR's LLMOps layer (`lib/llmops/`) guarantees:
 
 ## 5. Directory, File & Function Walkthrough
 
-Below is the complete engineering inventory of every folder, file, and load-bearing function in the HAKMDAR AI stack.
+Below is the complete engineering inventory of every folder, file, and load-bearing function in the Arabic Law RAG AI stack.
 
 ### 5.1 Directory: `lib/ai/` (Core Artificial Intelligence Primitives)
 
@@ -673,7 +673,7 @@ Below is the complete engineering inventory of every folder, file, and load-bear
   - `LangSmithTracer`: Native exporter pushing runs to LangSmith when `LANGSMITH_API_KEY` is present.
   - `getTracer()`: Composite factory instantiating active tracers based on environment configuration.
 - **`spans.ts`:**
-  - `spanChatFast()`, `spanCaseDeep()`: Helper utilities constructing standard hierarchical span trees (`hakmdar.ai.run` $\rightarrow$ `guard_pre` $\rightarrow$ `retrieve` $\rightarrow$ `synthesize` $\rightarrow$ `post_guard`).
+  - `spanChatFast()`, `spanCaseDeep()`: Helper utilities constructing standard hierarchical span trees (`arabic-law-rag.ai.run` $\rightarrow$ `guard_pre` $\rightarrow$ `retrieve` $\rightarrow$ `synthesize` $\rightarrow$ `post_guard`).
 
 #### Subdirectory: `lib/llmops/metrics/` (Performance & Cost Instrumentation)
 - **`names.ts`:** `LLMOPS_METRIC_NAMES`: Standard metric identifiers (`ai_ttft_ms`, `ai_request_duration_ms`, `ai_citations_rejected_total`, `ai_feedback_total`, `ai_cost_usd_total`).
@@ -749,7 +749,7 @@ The highest engineering hurdle in this project was achieving **98.5% retrieval r
 
 ### 6.1 The Dual-Representation Text Architecture
 
-In HAKMDAR, every legal provision is stored and processed under two distinct representations:
+In Arabic Law RAG, every legal provision is stored and processed under two distinct representations:
 
 ```
                     [Raw Statutory Ingestion]
@@ -765,7 +765,7 @@ In HAKMDAR, every legal provision is stored and processed under two distinct rep
 ```
 
 **Why this matters:**  
-If you search on normalized text, you get high recall. But if you *generate output* from normalized text, the resulting court memorandum looks unprofessional, missing proper punctuation and legal accents. HAKMDAR searches on normalized text but quotes the **Raw Verbatim** stream.
+If you search on normalized text, you get high recall. But if you *generate output* from normalized text, the resulting court memorandum looks unprofessional, missing proper punctuation and legal accents. Arabic Law RAG searches on normalized text but quotes the **Raw Verbatim** stream.
 
 ---
 
@@ -775,7 +775,7 @@ Standard text chunkers (e.g., LangChain `RecursiveCharacterTextSplitter`) measur
 - An article might have three sub-paragraphs, or
 - Multiple short articles might be grouped on a single page.
 
-HAKMDAR uses a specialized regex compiled with multiline support:
+Arabic Law RAG uses a specialized regex compiled with multiline support:
 ```python
 CLAUSE_START = re.compile(
     r"(?m)^(?:\s*(?:المادة|البند|مادة|بند|Article|Clause)\s*[\(\[]?([\d٠-٩]+)[\)\]]?|"
@@ -795,7 +795,7 @@ This regex detects:
 
 Egyptian citizens explain their legal disputes in colloquial dialect (*العامية المصرية*). A citizen will never ask: *"ما هو التكييف القانوني للشرط الفاسخ الصريح؟"*. They will state: *"صاحب الشغل طردني ومش راضي يديني مليم"*.
 
-HAKMDAR's Pre-Guard engine (`lib/ai/safety/legalGuard.ts`) contains an expert linguistic translation layer:
+Arabic Law RAG's Pre-Guard engine (`lib/ai/safety/legalGuard.ts`) contains an expert linguistic translation layer:
 
 ```typescript
 export const EGYPTIAN_COLLOQUIAL_MAP: Record<string, { concepts: string[]; laws: string[] }> = {
@@ -844,7 +844,7 @@ export const EGYPTIAN_COLLOQUIAL_MAP: Record<string, { concepts: string[]; laws:
 
 ## 7. Guardrails & Safety Subsystem
 
-HAKMDAR implements a two-stage deterministic safety architecture:
+Arabic Law RAG implements a two-stage deterministic safety architecture:
 
 ```
 [Incoming User Query]
@@ -875,7 +875,7 @@ HAKMDAR implements a two-stage deterministic safety architecture:
 
 ### 7.1 The Pre-Execution Guard (`preGuard`)
 - **Out-of-Domain Rejection:** Uses multi-pattern matching to identify queries relating to cooking, programming, sports, poetry, trivia, or general medical advice. Emits a polite, professional redirect:
-  > *"عذراً، أنا المستشار القانوني حِكِمْدار، نظام ذكاء اصطناعي مخصص ومقيد حصرياً للإجابة على الاستفسارات القانونية والتشريعية في جمهورية مصر العربية."*
+  > *"عذراً، أنا المستشار القانوني، نظام ذكاء اصطناعي مخصص ومقيد حصرياً للإجابة على الاستفسارات القانونية والتشريعية في جمهورية مصر العربية."*
 - **Domain Identification:** Assigns one of 8 legal domains: `labor`, `civil`, `commercial`, `criminal`, `personal_status`, `rent`, `administrative`, or `constitutional`.
 
 ### 7.2 The Post-Execution Guard & Citation Kill-Switch (`postGuard`)
@@ -893,11 +893,11 @@ The post-guard is the final enforcer before any byte leaves the server:
 
 ## 8. System-Wide Fallback Matrix
 
-HAKMDAR is engineered to remain operational even during severe infrastructure degradation:
+Arabic Law RAG is engineered to remain operational even during severe infrastructure degradation:
 
 | Component / Subsystem | Primary Mode | Failure Condition | Automated Fallback Behavior |
 | :--- | :--- | :--- | :--- |
-| **Authentication & Tenancy** | Supabase Auth via PostgreSQL | Supabase credentials missing or invalid | Edge Middleware sets `x-hakmdar-demo-mode: 1`; initializes local guest identity (`demo-user`). Protected routes remain accessible for offline demonstration. |
+| **Authentication & Tenancy** | Supabase Auth via PostgreSQL | Supabase credentials missing or invalid | Edge Middleware sets `x-arabic-law-rag-demo-mode: 1`; initializes local guest identity (`demo-user`). Protected routes remain accessible for offline demonstration. |
 | **Consultation Streaming** | Server-Sent Events (`/api/ai/chat/stream`) | Client network blocks streaming or SSE fails | Client UI (`app/client/ai-chat/page.tsx`) catches error and falls back to synchronous JSON route (`/api/ai/chat`). |
 | **Legal Retrieval Engine** | Remote Python RAG Container (`LEGAL_RAG_BASE_URL`) | Python sidecar offline or unreachable | `lib/ai/legalRag.ts` automatically executes in-process hybrid search over local `egyptian-labor-law.json` (46 articles) + Legal Encyclopedia. Zero network required. |
 | **LLM Inference** | Groq Cloud API (`qwen/qwen3.8-27b`) | `GROQ_API_KEY` missing, expired, or network down | `lib/ai/generation/grounded.ts` generates deterministic, template-grounded Fus'ha Arabic legal advice referencing retrieved article numbers. |
@@ -910,7 +910,7 @@ HAKMDAR is engineered to remain operational even during severe infrastructure de
 
 ## 9. Model Selection & Benchmarking Rationale
 
-HAKMDAR operates a multi-model routing table (`lib/llmops/registry/models.ts`). Models were selected through rigorous empirical benchmarking against Arabic legal prompts:
+Arabic Law RAG operates a multi-model routing table (`lib/llmops/registry/models.ts`). Models were selected through rigorous empirical benchmarking against Arabic legal prompts:
 
 ```
 ┌──────────────────────────────┬──────────────────┬─────────────────────────────────────┐
@@ -947,7 +947,7 @@ HAKMDAR operates a multi-model routing table (`lib/llmops/registry/models.ts`). 
 
 ## 10. Observability, Telemetry & Evaluation Architecture
 
-HAKMDAR implements the complete **LLMOps Control Plane** specified in `HAKMDAR_LLMOPS_EVAL_LOGS_FEEDBACK_MEMORY_ADDON.md`:
+Arabic Law RAG implements the complete **LLMOps Control Plane** specified in `LLMOPS_EVAL_LOGS_FEEDBACK_MEMORY_ADDON.md`:
 
 ### 10.1 The 22-Event Structured Logging Catalog (`lib/llmops/logging/`)
 Every execution boundary emits a single-line JSON log adhering to the L3.2 envelope:
@@ -955,7 +955,7 @@ Every execution boundary emits a single-line JSON log adhering to the L3.2 envel
 {
   "ts": "2026-09-18T03:29:30.658Z",
   "level": "info",
-  "service": "hakmdar-next",
+  "service": "arabic-law-rag",
   "env": "production",
   "event": "ai.retrieve.done",
   "trace_id": "7d3544e8-3a41-40bd-b9c5-87f641868c56",
@@ -1001,7 +1001,7 @@ Before any log envelope is serialized to stdout or storage, it passes through `r
 ---
 
 ### 10.3 The 57-Scenario Offline Evaluation Suite (`evaluation/`)
-HAKMDAR enforces automated quality gates via `evaluation/runner.ts` and `scripts/eval_compare_baseline.ts`:
+Arabic Law RAG enforces automated quality gates via `evaluation/runner.ts` and `scripts/eval_compare_baseline.ts`:
 - **57 Total Test Cases:** 48 authentic Egyptian legal disputes (labor dismissal, wage disputes, bounced cheques, trust receipts, tenancy evictions, divorce and alimony) + 9 Out-of-Domain controls.
 - **Continuous Gate Thresholds:**
   - `guard_precision`: Target $\ge 90\%$ $\rightarrow$ **Achieved: 100.0%**
@@ -1024,7 +1024,7 @@ This engineering implementation has been validated across four independent verif
 3. **Production Next.js Compiler & Linter:**
    - `npx next build` completed with **0 ESLint errors** across all **31 static and dynamic routes**.
 4. **GitHub Actions Remote CI:**
-   - Workflow run `35303947483` on `myler71/hakmdar`: **100% Green**.
+   - Workflow run `35303947483` on `the source repository`: **100% Green**.
    - `Lint, Types & Vitest` passed in 59 seconds on Node.js 22.
    - `LLMOps Smoke Eval (PR Gate)` passed in 31 seconds.
 
@@ -1032,7 +1032,7 @@ This engineering implementation has been validated across four independent verif
 
 ## 12. Summary Architectural Conclusion
 
-HAKMDAR demonstrates that mission-critical legal artificial intelligence cannot be built on generic conversational APIs. By enforcing:
+Arabic Law RAG demonstrates that mission-critical legal artificial intelligence cannot be built on generic conversational APIs. By enforcing:
 - **Constitutional source hierarchies**,
 - **Clause-aware statutory boundary chunking**,
 - **Reciprocal Rank Fusion hybrid retrieval**,

@@ -1,6 +1,6 @@
-# ⚖️ HAKMDAR Egyptian Legal AI — Offline Evaluation Report
+# ⚖️ Arabic Law RAG Egyptian Legal AI — Offline Evaluation Report
 
-- **Generated:** 2026-09-24T10:00:38.969Z
+- **Generated:** 2026-09-24T10:26:44.333Z
 - **Total Scenarios Evaluated:** 57 (Legal: 48, OOD Controls: 9)
 - **Overall Suite Status:** ✅ **PASSED ALL THRESHOLDS**
 
@@ -33,4 +33,4 @@
 🎉 **Zero failures!** All scenarios satisfied guard, retrieval, citation, and disclaimer assertions.
 
 ---
-*Report generated automatically by HAKMDAR Offline Evaluation Suite.*
+*Report generated automatically by Arabic Law RAG Offline Evaluation Suite.*

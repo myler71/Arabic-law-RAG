@@ -2,7 +2,7 @@
 set -eu
 
 echo "=========================================================="
-echo "  HAKMDAR LLMOps: Smoke Evaluation (PR / Pre-deploy Gate)"
+echo "  Arabic Law RAG LLMOps: Smoke Evaluation (PR / Pre-deploy Gate)"
 echo "=========================================================="
 
 npx tsx lib/llmops/eval/runner.ts evaluation/smoke_suite.json --gate smoke "$@"

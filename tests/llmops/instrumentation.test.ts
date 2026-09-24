@@ -23,7 +23,7 @@ describe('LLMOps Instrumentation & Event Emission', () => {
     defaultRateLimiter.reset();
     // Isolate run store per worker: parallel test files share the default file otherwise.
     runStore.useFile(
-      path.join(os.tmpdir(), `hakmdar_runs_${process.pid}_${Date.now()}.jsonl`)
+      path.join(os.tmpdir(), `arabic-law-rag_runs_${process.pid}_${Date.now()}.jsonl`)
     );
     await runStore.clear();
 
@@ -51,7 +51,7 @@ describe('LLMOps Instrumentation & Event Emission', () => {
       if (!trimmed.startsWith('{') || !trimmed.endsWith('}')) continue;
       try {
         const parsed = JSON.parse(trimmed);
-        if (parsed.service === 'hakmdar-next' && parsed.event) {
+        if (parsed.service === 'arabic-law-rag' && parsed.event) {
           logs.push(parsed);
         }
       } catch {
@@ -96,7 +96,7 @@ describe('LLMOps Instrumentation & Event Emission', () => {
       // Verify all emitted logs correlate with the same trace_id
       for (const log of logs) {
         expect(log.trace_id).toBe(headerTraceId);
-        expect(log.service).toBe('hakmdar-next');
+        expect(log.service).toBe('arabic-law-rag');
         expect(log.mode).toBe('chat_fast');
         expect(log.route).toBe('/api/ai/chat');
       }

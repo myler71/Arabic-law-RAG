@@ -18,7 +18,7 @@
 
 ## System Overview
 
-This repository contains the sovereign AI engine extracted from [HAKMDAR](https://github.com/myler71/hakmdar): a zero-hallucination legal retrieval and generation stack for Egyptian law. It provides an evaluation-verified hybrid retrieval engine (BM25 + TF-IDF + Arabic normalization over codified statutes), a typed Server-Sent Events consultation protocol, a deterministic multi-agent case-brief graph with lawyer Human-In-The-Loop (HITL) review, and a production-grade LLMOps observability and evaluation layer.
+This repository contains a sovereign, offline-first AI engine for Egyptian law: a zero-hallucination legal retrieval and generation stack. It provides an evaluation-verified hybrid retrieval engine (BM25 + TF-IDF + Arabic normalization over codified statutes), a typed Server-Sent Events consultation protocol, a deterministic multi-agent case-brief graph with lawyer Human-In-The-Loop (HITL) review, and a production-grade LLMOps observability and evaluation layer.
 
 The web application (pages, components, practice-management CRUD APIs) is **not** part of this repository. The AI HTTP surface (`app/api/ai/*`) and the session middleware are included because they are the tested adapter boundary for the engine.
 
@@ -133,7 +133,7 @@ npm test
 cp .env.example .env.local
 ```
 
-Every variable is optional. Without Supabase credentials the routes run in offline demo mode and return the `x-hakmdar-demo-mode: 1` header. See `.env.example` for the full list (Supabase, Ollama, Groq judge, OTLP, LangSmith, feature flags).
+Every variable is optional. Without Supabase credentials the routes run in offline demo mode and return the `x-arabic-law-rag-demo-mode: 1` header. See `.env.example` for the full list (Supabase, Ollama, Groq judge, OTLP, LangSmith, feature flags).
 
 ### Evaluation
 
@@ -178,7 +178,7 @@ uvicorn app.api.main:app --host 127.0.0.1 --port 8000   # or run_api.bat
 
 ## Supabase Migrations (optional)
 
-`supabase/migrations/20260915000000_llmops_runs_feedback.sql` and `20260915000001_llmops_memory.sql` create the optional `ai_runs`, `ai_feedback`, `ai_memory_items`, and `ai_eval_cases` tables with row-level security. They reference `auth.users`, `public.profiles`, and `public.cases`, which are defined in the excluded practice-management schema, so they apply only inside a hakmdar-compatible Supabase project. **The supported standalone persistence is the JSONL fallback** under `.llmops/`, which is what the test suite exercises.
+`supabase/migrations/20260915000000_llmops_runs_feedback.sql` and `20260915000001_llmops_memory.sql` create the optional `ai_runs`, `ai_feedback`, `ai_memory_items`, and `ai_eval_cases` tables with row-level security. They reference `auth.users`, `public.profiles`, and `public.cases`, which live in the practice-management schema of the host application and are **not** part of this repository, so they apply only inside a Supabase project that already defines those tables. **The supported standalone persistence is the JSONL fallback** under `.llmops/`, which is what the test suite exercises.
 
 **Dependency advisory (carried over from the source):** `npm audit` reports a high-severity advisory in the `postcss` version bundled with `next@15.x` (XSS via unescaped `</style>` in CSS stringify output, and file disclosure via attacker-controlled `sourceMappingURL`; see GHSA-qx2v-qp2m-jg93, GHSA-6g55-p6wh-862q). The remediation is a breaking upgrade to `next@16.3.6+`, which is out of scope for this extraction and was not applied. Exposure in this repository is limited to build-time CSS tooling: there is no CSS pipeline, no pages, and no attacker-controlled stylesheet input. Consumers deploying these routes inside a Next.js application should upgrade Next.js to a patched version.
 
@@ -186,7 +186,7 @@ uvicorn app.api.main:app --host 127.0.0.1 --port 8000   # or run_api.bat
 
 **Python dependency pinning:** `legalassist-ai/requirements.txt` uses lower-bound ranges (`>=`) with no upper bounds, as in the source repository. For reproducible or hardened deployments, pin exact versions or add a constraints file after auditing the transitive set (torch, transformers, and sentence-transformers pull large transitive trees).
 
-**Telemetry egress:** logging writes one JSON line per event to stdout; trace and metric export is opt-in via `OTLP_ENDPOINT` (default `http://localhost:4318`) or `LANGSMITH_API_KEY` (default project `hakmdar-dev`). With neither configured, no data leaves the process. If you enable LangSmith or a remote OTLP endpoint, legal queries and retrieval metadata will be sent to that service.
+**Telemetry egress:** logging writes one JSON line per event to stdout; trace and metric export is opt-in via `OTLP_ENDPOINT` (default `http://localhost:4318`) or `LANGSMITH_API_KEY` (default project `arabic-law-rag-dev`). With neither configured, no data leaves the process. If you enable LangSmith or a remote OTLP endpoint, legal queries and retrieval metadata will be sent to that service.
 
 ---
 
@@ -197,12 +197,12 @@ Explore the comprehensive design and architectural documentation located in [`/d
 - [**Deep AI Systems Engineering & Architecture Report**](./docs/AI_ENGINEERING_DEEP_TECHNICAL_REPORT.md) — Comprehensive technical report detailing all folders, files, functions, the multi-agent state machine, RAG mathematics, LangMem memory tiers, Arabic NLP engineering, and the LLMOps control plane.
 - [**Visual Architecture Deep Dive**](./docs/ARCHITECTURE_DEEP_DIVE.md) — Detailed Mermaid diagrams covering the data journey from ingestion to observability.
 - [**Interactive Visualizations (HTML)**](./docs/visuals/) — Standalone interactive architecture diagrams:
-  - [AI Architecture Map](./docs/visuals/hakmdar-ai-architecture.html)
-  - [AI Stack Topology](./docs/visuals/hakmdar-ai-stack.html)
-  - [AI Data Flow Engine](./docs/visuals/hakmdar-ai-dataflow.html)
-  - [AI Consultation Sequence](./docs/visuals/hakmdar-ai-sequence.html)
-  - [AI Runtime Lifecycle](./docs/visuals/hakmdar-ai-lifecycle.html)
-  - [Multi-Agent Deep Workflow](./docs/visuals/hakmdar-deep-workflow.html)
+  - [AI Architecture Map](./docs/visuals/arabic-law-rag-ai-architecture.html)
+  - [AI Stack Topology](./docs/visuals/arabic-law-rag-ai-stack.html)
+  - [AI Data Flow Engine](./docs/visuals/arabic-law-rag-ai-dataflow.html)
+  - [AI Consultation Sequence](./docs/visuals/arabic-law-rag-ai-sequence.html)
+  - [AI Runtime Lifecycle](./docs/visuals/arabic-law-rag-ai-lifecycle.html)
+  - [Multi-Agent Deep Workflow](./docs/visuals/arabic-law-rag-deep-workflow.html)
 - [**Full Implementation Session Recap**](./docs/SESSION_RECAP_2026-09-15.md) — Line-by-line verification log, bugs diagnosed, and phase milestones.
 - [**LLMOps Operator Guide**](./docs/llmops.md) — Telemetry dictionary, logging envelopes, metrics catalog, and retention schedules.
 - [**Operations & Incident Runbook**](./docs/runbook.md) — Deployment instructions, key rotation, and troubleshooting playbooks.
@@ -231,9 +231,9 @@ Explore the comprehensive design and architectural documentation located in [`/d
 
 ## Provenance
 
-This repository is a **single-commit extraction** of the AI stack and RAG system from [myler71/hakmdar](https://github.com/myler71/hakmdar) at commit `323f5dc` (2026-09-18), authored by **Marwan Ammar (myler71)**.
+This repository is a **single-commit extraction** of an AI stack and RAG engine that was originally developed inside a larger Egyptian legal-practice application, authored by **Marwan Ammar (myler71)**.
 
-- The source repository is unmodified; this repository carries no history from other hakmdar contributors. The hakmdar team (Marwan Ammar, Kareemzaytoon, meroo145, Aseel, Aseel623-ai, Saif Mohamed) built the original application; the AI work extracted here was authored by Marwan Ammar.
+- The source application is unmodified; this repository carries no history from other contributors. The AI engine, RAG system, LLMOps control plane, and evaluation suite here were authored by Marwan Ammar.
 - The extraction design and boundary decisions are recorded in [`docs/superpowers/specs/2026-09-24-arabic-law-rag-extraction-design.md`](./docs/superpowers/specs/2026-09-24-arabic-law-rag-extraction-design.md).
 - Documented debt and caveats carried over from the source are listed in the design spec, including the Python `/api/search` gap and migration prerequisites.
 

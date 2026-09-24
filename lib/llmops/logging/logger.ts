@@ -161,7 +161,7 @@ export function emitLog(
   const envelope: LlmopsLogEnvelope = {
     ts: new Date().toISOString(),
     level,
-    service: 'hakmdar-next',
+    service: 'arabic-law-rag',
     env: resolveEnv(),
     event,
     trace_id,

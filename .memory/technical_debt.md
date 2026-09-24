@@ -2,7 +2,7 @@
 
 Owners are named agents/roles with target dates. Entries only — no prose.
 
-Source: extracted from the HAKMDAR register. Items TD-01 through TD-11 (practice-management schema, UI, and web E2E) were dropped with the web application; TD-12 through TD-16 are retained.
+Source: extracted from the Arabic Law RAG register. Items TD-01 through TD-11 (practice-management schema, UI, and web E2E) were dropped with the web application; TD-12 through TD-16 are retained.
 
 | ID | Item | Source | Owner | Target date |
 |----|------|--------|-------|-------------|

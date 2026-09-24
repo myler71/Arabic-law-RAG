@@ -2,7 +2,7 @@
 set -eu
 
 echo "=========================================================="
-echo "  HAKMDAR LLMOps: Full Evaluation Suite (Nightly / Release)"
+echo "  Arabic Law RAG LLMOps: Full Evaluation Suite (Nightly / Release)"
 echo "=========================================================="
 
 echo ""

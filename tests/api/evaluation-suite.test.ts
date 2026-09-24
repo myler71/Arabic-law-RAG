@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { runEvaluation } from '@/evaluation/runner';
 
-describe('HAKMDAR Offline Evaluation Suite', () => {
+describe('Arabic Law RAG Offline Evaluation Suite', () => {
   it('executes full offline evaluation suite and passes all target thresholds', async () => {
     const report = await runEvaluation();
 
@@ -41,7 +41,7 @@ describe('HAKMDAR Offline Evaluation Suite', () => {
     expect(parsedJson.passed).toBe(true);
 
     const mdContent = fs.readFileSync(mdReportPath, 'utf-8');
-    expect(mdContent).toContain('HAKMDAR Egyptian Legal AI — Offline Evaluation Report');
+    expect(mdContent).toContain('Arabic Law RAG Egyptian Legal AI — Offline Evaluation Report');
     expect(mdContent).toContain('PASSED ALL THRESHOLDS');
   }, 30000);
 });

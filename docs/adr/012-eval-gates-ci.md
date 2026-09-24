@@ -13,7 +13,7 @@ Deploying changes to prompts, model providers, retrieval parameters, or agent wo
 3. **Dispute Rejection Errors**: Mistakenly rejecting emotionally charged but valid client legal disputes (e.g., *"صاحب العمل طردني وحبس أوراقي"*).
 4. **Latency & Cost Regressions**: Unmonitored token blowup or Time-to-First-Token (TTFT) exceeding SLA boundaries ($> 800\text{ms}$).
 
-To prevent regressions, HAKMDAR requires automated, deterministic quality gates integrated directly into continuous integration (CI) pipelines, coupled with clear waiver profiles for pre-production infrastructure states.
+To prevent regressions, Arabic Law RAG requires automated, deterministic quality gates integrated directly into continuous integration (CI) pipelines, coupled with clear waiver profiles for pre-production infrastructure states.
 
 ---
 

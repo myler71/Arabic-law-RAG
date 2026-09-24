@@ -1,7 +1,7 @@
-# HAKMDAR — Full Session Recap
+# Arabic Law RAG — Full Session Recap
 **Dates worked:** 2026-09-14 → 2026-09-15
-**Scope:** Master Mission Prompt (`HAKMDAR_ONE_BIG_FAT_MASTER_PROMPT.md` v4.0-ONE-FAT) + LLMOps Add-on (`HAKMDAR_LLMOPS_EVAL_LOGS_FEEDBACK_MEMORY_ADDON.md` v1.0-LLMOPS-ADDON)
-**Repo:** `C:\Users\Myler\Downloads\1 PROJECTS\hakimdar\HAKMDAR` (git `Saif-Mohamed-47/HAKMDAR`, baseline `master @ ea46529`) — **nothing committed; all work local**
+**Scope:** Master Mission Prompt (`MASTER_MISSION_PROMPT.md` v4.0-ONE-FAT) + LLMOps Add-on (`LLMOPS_EVAL_LOGS_FEEDBACK_MEMORY_ADDON.md` v1.0-LLMOPS-ADDON)
+**Repo:** `<source repository>` (git `the source repository`, baseline `master @ ea46529`) — **nothing committed; all work local**
 **Execution model:** Main-thread architect + 17 delegated subagents (`task` workers), each verified independently by the main thread.
 
 ---
@@ -39,7 +39,7 @@
 
 | Item | Implementation |
 |---|---|
-| Route protection | `middleware.ts` (new): Supabase SSR cookie refresh; `/lawyer/*` → `/login?role=lawyer`, `/client/*` → `/login?role=client`; exemptions (`/`, `/login*`, `/register*`, `/auth*`, static, `/_next`); **offline/demo fallback** sets `x-hakmdar-demo-mode: 1` when Supabase not configured |
+| Route protection | `middleware.ts` (new): Supabase SSR cookie refresh; `/lawyer/*` → `/login?role=lawyer`, `/client/*` → `/login?role=client`; exemptions (`/`, `/login*`, `/register*`, `/auth*`, static, `/_next`); **offline/demo fallback** sets `x-arabic-law-rag-demo-mode: 1` when Supabase not configured |
 | Rate limiting | `lib/ai/rateLimiter.ts` (new): in-memory sliding window, default **30 req/min**, `checkRateLimit(id)` → `{allowed, remaining, resetMs}`; wired into `/api/ai/chat` (429 + `Retry-After` + `X-RateLimit-*` headers) |
 | AI auth | `/api/ai/chat`: `createServerClient(req)` session check → 401 when configured and no user; demo-mode guest allowed with audit |
 | Tenancy (R-2) | `POST /api/cases`: verifies `client_id` belongs to lawyer → else **403** `العميل المحدد لا يتبع حساب المحامي الحالي`. `POST /api/time-entries`: verifies `case_id` ownership → **403**. Both also 401-offline-safe |

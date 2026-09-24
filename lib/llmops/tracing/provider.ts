@@ -209,13 +209,13 @@ export class OtlpTracer implements TracingProvider {
         {
           resource: {
             attributes: [
-              { key: 'service.name', value: { stringValue: 'hakmdar-next' } },
+              { key: 'service.name', value: { stringValue: 'arabic-law-rag' } },
               { key: 'service.version', value: { stringValue: process.env.APP_GIT_SHA ?? 'dev' } },
             ],
           },
           scopeSpans: [
             {
-              scope: { name: 'hakmdar.llmops', version: '1.0.0' },
+              scope: { name: 'arabic-law-rag.llmops', version: '1.0.0' },
               spans: spans.map((s) => ({
                 traceId: s.traceId.replace(/-/g, '').padEnd(32, '0'),
                 spanId: s.id.padEnd(16, '0'),
@@ -296,7 +296,7 @@ export class LangSmithTracer implements TracingProvider {
       options?.projectName ??
       process.env.LANGSMITH_PROJECT ??
       process.env.LANGCHAIN_PROJECT ??
-      'hakmdar-dev';
+      'arabic-law-rag-dev';
     this.fetchFn = options?.fetchFn ?? globalThis.fetch;
   }
 

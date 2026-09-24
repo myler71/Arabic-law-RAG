@@ -1,5 +1,5 @@
 /**
- * HAKMDAR LLMOps Data Retention Engine (Spec L3.7, L8.6)
+ * Arabic Law RAG LLMOps Data Retention Engine (Spec L3.7, L8.6)
  *
  * Implements retention policies across local file stores and documents
  * the PostgreSQL / Supabase retention policies for cloud tables (ai_runs, ai_run_spans, ai_feedback).
@@ -51,7 +51,7 @@ export interface RetentionPurgeResult {
  *       AND id NOT IN (SELECT run_id FROM ai_feedback WHERE run_id IS NOT NULL);
  *   $$);
  */
-export const AI_RUNS_RETENTION_SQL = `-- HAKMDAR LLMOps ai_runs Retention Policy (Service Role Scheduled Job)
+export const AI_RUNS_RETENTION_SQL = `-- Arabic Law RAG LLMOps ai_runs Retention Policy (Service Role Scheduled Job)
 -- Schedule: Daily at 03:00 UTC
 -- Safe: Protects all runs linked to feedback (T0) and eval gold (T3).
 
@@ -249,7 +249,7 @@ if (typeof process !== 'undefined' && process.argv) {
 
     purgeDebugPayloads({ olderThanDays: days, dryRun })
       .then((res) => {
-        console.log('--- HAKMDAR LLMOps Retention Cleanup ---');
+        console.log('--- Arabic Law RAG LLMOps Retention Cleanup ---');
         console.log(`Dry run: ${res.dryRun}`);
         console.log(`Files scanned: ${res.filesScanned}`);
         console.log(`Files modified: ${res.filesModified}`);

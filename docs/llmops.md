@@ -1,6 +1,6 @@
-# HAKMDAR LLMOps Operator Guide
+# Arabic Law RAG LLMOps Operator Guide
 
-This guide provides operational instructions for monitoring, debugging, evaluating, and maintaining the HAKMDAR legal AI system across environments.
+This guide provides operational instructions for monitoring, debugging, evaluating, and maintaining the Arabic Law RAG legal AI system across environments.
 
 ---
 
@@ -14,7 +14,7 @@ Every AI lifecycle event is emitted as a single structured JSON line to `stdout`
 {
   "ts": "2026-09-15T12:00:00.123Z",
   "level": "info",
-  "service": "hakmdar-next",
+  "service": "arabic-law-rag",
   "env": "prod",
   "event": "ai.retrieve.done",
   "trace_id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
@@ -104,7 +104,7 @@ Every AI lifecycle event is emitted as a single structured JSON line to `stdout`
 # Tracing exports (Optional)
 OTLP_ENDPOINT="http://otel-collector.internal:4318"
 LANGSMITH_API_KEY="lsv2_pt_..."
-LANGSMITH_PROJECT="hakmdar-prod"
+LANGSMITH_PROJECT="arabic-law-rag-prod"
 
 # Model routing overrides
 LLM_JUDGE_MODEL="qwen/qwen3.8-27b"
@@ -132,12 +132,12 @@ User Question / Chat
    │
    ▼
 2. Query Log Aggregator (Loki/CloudWatch/Datadog) by trace_id:
-   {service="hakmdar-next"} |= "9b1deb4d-..."
+   {service="arabic-law-rag"} |= "9b1deb4d-..."
    (Check chronological events: ai.guard_pre.done -> ai.retrieve.done -> ai.llm.done)
    │
    ▼
 3. Open Distributed Tracing UI (OpenTelemetry Jaeger/SigNoz or LangSmith):
-   Trace: hakmdar.ai.run
+   Trace: arabic-law-rag.ai.run
    ├── ai.auth (latency: 12ms)
    ├── ai.guard_pre (is_legal=true, domain=labor)
    ├── ai.retrieve (retrieved 4 chunks; chunk_ids=["statute:labor:122"])
@@ -185,7 +185,7 @@ User Question / Chat
 
 ```yaml
 groups:
-  - name: hakmdar_llmops_alerts
+  - name: arabic_law_rag_llmops_alerts
     rules:
       - alert: HighAIErrorRate
         expr: sum(rate(ai_errors_total[5m])) / sum(rate(ai_requests_total[5m])) > 0.05
@@ -237,7 +237,7 @@ groups:
 
 ## 8. PII & Sensitive Secret Redaction Policy (L3.1 & L10)
 
-HAKMDAR enforces strict client privacy under Egyptian law and legal ethics regulations:
+Arabic Law RAG enforces strict client privacy under Egyptian law and legal ethics regulations:
 
 1. **Egyptian National IDs**:
    - Matches standard 14-digit national identifier sequences.

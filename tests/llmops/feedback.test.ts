@@ -19,9 +19,9 @@ describe('LLMOps Feedback and RunStore Integration', () => {
       capturedLogs.push(env);
     });
     const uniq = `${process.pid}_${Date.now()}_${Math.floor(Math.random() * 1e9)}`;
-    runStore.useFile(path.join(os.tmpdir(), `hakmdar_runs_${uniq}.jsonl`));
-    feedbackStore.useFile(path.join(os.tmpdir(), `hakmdar_fb_${uniq}.jsonl`));
-    langMemStore.setFilePath(path.join(os.tmpdir(), `hakmdar_mem_${uniq}.jsonl`));
+    runStore.useFile(path.join(os.tmpdir(), `arabic-law-rag_runs_${uniq}.jsonl`));
+    feedbackStore.useFile(path.join(os.tmpdir(), `arabic-law-rag_fb_${uniq}.jsonl`));
+    langMemStore.setFilePath(path.join(os.tmpdir(), `arabic-law-rag_mem_${uniq}.jsonl`));
     await runStore.clear();
     await feedbackStore.clear();
     await langMemStore.clear();
