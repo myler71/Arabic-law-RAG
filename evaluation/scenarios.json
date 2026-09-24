@@ -1,0 +1,556 @@
+[
+  {
+    "id": "labor-01",
+    "category": "labor",
+    "question_ar": "فصلني المدير تعسفياً بدون أي إنذار مسبق وأطالب بتعويض المادة 122",
+    "is_legal": true,
+    "domain": "labor",
+    "expected_article_anchor": ["م 122", "م 69"],
+    "expect_disclaimer": false,
+    "notes": "فصل تعسفي وتعويض شهرين عن كل سنة خدمة وفقاً للمادتين 69 و 122"
+  },
+  {
+    "id": "labor-02",
+    "category": "labor",
+    "question_ar": "صاحب العمل طردني من الشغل ومش راضي يديني مليم بعد 4 سنوات خدمة",
+    "is_legal": true,
+    "domain": "labor",
+    "expected_article_anchor": ["م 122"],
+    "expect_disclaimer": false,
+    "notes": "لهجة عامية لطرد تعسفي وإنهاء علاقة عمل بدون مستحقات"
+  },
+  {
+    "id": "labor-03",
+    "category": "labor",
+    "question_ar": "ما هي المدة القانونية لمهلة الإخطار قبل إنهاء عقد العمل غير محدد المدة؟",
+    "is_legal": true,
+    "domain": "labor",
+    "expected_article_anchor": ["م 111", "م 110"],
+    "expect_disclaimer": false,
+    "notes": "مهلة الإخطار شهران أو ثلاثة أشهر بحسب مدة الخدمة بالمادة 111"
+  },
+  {
+    "id": "labor-04",
+    "category": "labor",
+    "question_ar": "صاحب العمل أنهى عقد العمل دون إخطار فهل أستحق تعويض بدل مهلة الإخطار؟",
+    "is_legal": true,
+    "domain": "labor",
+    "expected_article_anchor": ["م 116", "م 111"],
+    "expect_disclaimer": false,
+    "notes": "بدل مهلة الإخطار والتعويض المالي عن عدم الإخطار بالمادة 116"
+  },
+  {
+    "id": "labor-05",
+    "category": "labor",
+    "question_ar": "صاحب الشركة رافض يديني أوراقي ومسوغات التعيين وشهادة الخدمة مادة 123 بعد الاستقالة",
+    "is_legal": true,
+    "domain": "labor",
+    "expected_article_anchor": ["م 123"],
+    "expect_disclaimer": false,
+    "notes": "التزام صاحب العمل برد مسوغات التعيين وشهادة نهاية الخدمة بالمادة 123"
+  },
+  {
+    "id": "labor-06",
+    "category": "labor",
+    "question_ar": "مش راضيين يدوني أوراقي ولا شهادة نهاية الخدمة من إدارة الشركة",
+    "is_legal": true,
+    "domain": "labor",
+    "expected_article_anchor": ["م 123"],
+    "expect_disclaimer": false,
+    "notes": "عامية مصرية لاحتجاز مسوغات التعيين والأوراق الرسمية"
+  },
+  {
+    "id": "labor-07",
+    "category": "labor",
+    "question_ar": "هل يجوز لصاحب العمل فصلي خلال فترة الاختبار في الشهر الرابع من العمل؟",
+    "is_legal": true,
+    "domain": "labor",
+    "expected_article_anchor": ["م 31"],
+    "expect_disclaimer": false,
+    "notes": "فترة الاختبار حدها الأقصى 3 أشهر ولا يجوز تعيين العامل تحت الاختبار أكثر من مرة بالمادة 31"
+  },
+  {
+    "id": "labor-08",
+    "category": "labor",
+    "question_ar": "المدير خصم من الأجر 10 أيام بدون أي تحقيق تأديبي رسمي مادة 68",
+    "is_legal": true,
+    "domain": "labor",
+    "expected_article_anchor": ["م 68"],
+    "expect_disclaimer": false,
+    "notes": "ضمانات التحقيق والمساءلة التأديبية والحد الأقصى للاستقطاع بالمادتين 68 و 40"
+  },
+  {
+    "id": "labor-09",
+    "category": "labor",
+    "question_ar": "بشتغل 12 ساعة يومياً في المصنع دون احتساب أجر الساعات الإضافية أوفرتايم",
+    "is_legal": true,
+    "domain": "labor",
+    "expect_disclaimer": true,
+    "notes": "ساعات العمل الإضافية وحساب الأجر الإضافي غير مشمولة في قاعدة البيانات المحلية فتختبر مسار التنبيه القانوني"
+  },
+  {
+    "id": "labor-10",
+    "category": "labor",
+    "question_ar": "تصفية الشركة وبيع المنشأة هل يسقط عقود العمال ومستحقاتهم؟",
+    "is_legal": true,
+    "domain": "labor",
+    "expected_article_anchor": ["م 129"],
+    "expect_disclaimer": false,
+    "notes": "استمرار عقود العمال والمسؤولية التضامنية عند إدماج المنشأة أو تصفيتها بالمادة 129"
+  },
+  {
+    "id": "labor-11",
+    "category": "labor",
+    "question_ar": "سرحوني بدون سبب بعد 5 سنين عمل وقالوا مش هتاخد مكافأة",
+    "is_legal": true,
+    "domain": "labor",
+    "expect_disclaimer": false,
+    "notes": "عامية مصرية لتسريح جماعي أو فصل تعسفي بدون تعويض تختبر التصنيف العمالي"
+  },
+  {
+    "id": "labor-12",
+    "category": "labor",
+    "question_ar": "مشوني من الشغل فجأة ورفدوني عشان اشتكيت في مكتب العمل",
+    "is_legal": true,
+    "domain": "labor",
+    "expected_article_anchor": ["م 117", "م 122"],
+    "expect_disclaimer": false,
+    "notes": "حظر الفصل الانتقامي بسبب الشكوى أو التقاضي بالمادة 117"
+  },
+  {
+    "id": "labor-13",
+    "category": "labor",
+    "question_ar": "هل يحق لي العدول عن الاستقالة المكتوبة التي قدمتها تحت ضغط نفسي؟",
+    "is_legal": true,
+    "domain": "labor",
+    "expected_article_anchor": ["م 119"],
+    "expect_disclaimer": false,
+    "notes": "حق العامل في العدول عن الاستقالة كتابة خلال أسبوع من قبولها بالمادة 119"
+  },
+  {
+    "id": "labor-14",
+    "category": "labor",
+    "question_ar": "استمرار العمل بعد انتهاء مدة العقد المحدد بسنتين دون تجديد كتابي",
+    "is_legal": true,
+    "domain": "labor",
+    "expected_article_anchor": ["م 105"],
+    "expect_disclaimer": false,
+    "notes": "تحول العقد محدد المدة إلى غير محدد المدة بالاستمرار الضمني بالمادة 105"
+  },
+  {
+    "id": "labor-15",
+    "category": "labor",
+    "question_ar": "صاحب العمل يرفض صرف مقابل رصيد الإجازات السنوية المتبقية بعد إنهاء خدمتي",
+    "is_legal": true,
+    "domain": "labor",
+    "expected_article_anchor": ["م 48", "م 47"],
+    "expect_disclaimer": false,
+    "notes": "تسوية رصيد الإجازات السنوية نقداً عند انتهاء الخدمة بالمادتين 48 و 47"
+  },
+  {
+    "id": "labor-16",
+    "category": "labor",
+    "question_ar": "حساب مكافأة نهاية الخدمة لمن بلغ سن الستين في قانون العمل",
+    "is_legal": true,
+    "domain": "labor",
+    "expected_article_anchor": ["م 126", "م 127"],
+    "expect_disclaimer": false,
+    "notes": "مكافأة نهاية الخدمة بعد سن الستين وقواعد حسابها بالمادتين 126 و 127"
+  },
+
+  {
+    "id": "comm-01",
+    "category": "commercial",
+    "question_ar": "عندي شيك مرتجع من البنك لعدم كفاية الرصيد وأريد رفع جنحة شيك",
+    "is_legal": true,
+    "domain": "commercial",
+    "expected_article_anchor": ["م 534"],
+    "expect_disclaimer": false,
+    "notes": "شيك مرتجع وجريمة إصدار شيك بدون رصيد بالمادة 534 تجارة"
+  },
+  {
+    "id": "comm-02",
+    "category": "commercial",
+    "question_ar": "ما هي عقوبة إصدار شيك بدون رصيد في القانون المصري رقم 17 لسنة 1999؟",
+    "is_legal": true,
+    "domain": "commercial",
+    "expected_article_anchor": ["م 534"],
+    "expect_disclaimer": false,
+    "notes": "المادة 534 من قانون التجارة وعقوبة الحبس والغرامة"
+  },
+  {
+    "id": "comm-03",
+    "category": "commercial",
+    "question_ar": "شخص كتب لي شيك بدون رصيد وتاريخ استحقاقه فات منذ شهر",
+    "is_legal": true,
+    "domain": "commercial",
+    "expected_article_anchor": ["م 534"],
+    "expect_disclaimer": false,
+    "notes": "شيك بدون رصيد وإجراءات الرجوع التجاري والجنائي"
+  },
+  {
+    "id": "comm-04",
+    "category": "commercial",
+    "question_ar": "القائمة",
+    "is_legal": true,
+    "domain": "labor",
+    "expect_disclaimer": false,
+    "notes": "لفظ القائمة العامي المفرد يختبر المواءمة العمالية والتوضيح القانوني في legalGuard"
+  },
+  {
+    "id": "comm-05",
+    "category": "commercial",
+    "question_ar": "صاحب العمل مضاني على وصل أمانة على بياض كشرط لاستلام الوظيفة",
+    "is_legal": true,
+    "domain": "criminal",
+    "expected_article_anchor": ["م 341", "م 534"],
+    "expect_disclaimer": false,
+    "notes": "وصل أمانة على بياض والطعن بالتزوير الصلبي وخيانة الائتمان"
+  },
+  {
+    "id": "comm-06",
+    "category": "commercial",
+    "question_ar": "إيصال أمانة على بياض وما هي إجراءات الطعن بالتزوير الصلبي؟",
+    "is_legal": true,
+    "domain": "criminal",
+    "expected_article_anchor": ["م 341", "م 534"],
+    "expect_disclaimer": false,
+    "notes": "خيانة الأمانة وفقاً للمادة 341 عقوبات والطعن على صلب الإيصال"
+  },
+  {
+    "id": "comm-07",
+    "category": "commercial",
+    "question_ar": "تأسيس شركة مساهمة والحد الأدنى لرأس المال في قانون الشركات رقم 159 لسنة 1981",
+    "is_legal": true,
+    "domain": "commercial",
+    "expected_article_anchor": ["م 4", "م 115"],
+    "expect_disclaimer": false,
+    "notes": "قانون الشركات رقم 159 لسنة 1981 والمادتان 4 و 115"
+  },
+
+  {
+    "id": "rent-01",
+    "category": "civil",
+    "question_ar": "عندي مستأجر مأجر ومبيخرجش بعد انتهاء مدة عقد الإيجار المحرر عام 2020",
+    "is_legal": true,
+    "domain": "rent",
+    "expected_article_anchor": ["م 147", "م 157"],
+    "expect_disclaimer": false,
+    "notes": "انتهاء عقد الإيجار الخاضع للقانون 4 لسنة 1996 وإخلاء العين"
+  },
+  {
+    "id": "rent-02",
+    "category": "civil",
+    "question_ar": "إجراءات رفع دعوى طرد للغصب ضد واضع اليد بدون سند قانوني",
+    "is_legal": true,
+    "domain": "rent",
+    "expect_disclaimer": false,
+    "notes": "دعوى طرد للغصب واسترداد حيازة العين"
+  },
+  {
+    "id": "rent-03",
+    "category": "civil",
+    "question_ar": "المستأجر ممتنع عن سداد الأجرة وأريد فسخ عقد الإيجار وإخلاء العين مادة 157",
+    "is_legal": true,
+    "domain": "rent",
+    "expected_article_anchor": ["م 157"],
+    "expect_disclaimer": false,
+    "notes": "إخلاء لعدم سداد الأجرة وفسخ عقد الإيجار وإلزام بالسداد"
+  },
+  {
+    "id": "rent-04",
+    "category": "civil",
+    "question_ar": "استرداد مبلغ التأمين الإيجاري المودع لدى المؤجر بعد تسليم الشقة سليمة",
+    "is_legal": true,
+    "domain": "rent",
+    "expect_disclaimer": false,
+    "notes": "التزام المؤجر برد مبلغ التأمين أو الوديعة عند انتهاء العقد"
+  },
+  {
+    "id": "rent-05",
+    "category": "civil",
+    "question_ar": "غير مأجر العين ولكن شخص وضع يده عليها غصباً وأريد طرده",
+    "is_legal": true,
+    "domain": "rent",
+    "expect_disclaimer": false,
+    "notes": "غصب الحيازة وطرد واضع اليد غير المستأجر"
+  },
+  {
+    "id": "rent-06",
+    "category": "civil",
+    "question_ar": "هل يجوز للمؤجر زيادة القيمة الإيجارية من تلقاء نفسه أثناء سريان العقد؟",
+    "is_legal": true,
+    "domain": "rent",
+    "expected_article_anchor": ["م 147"],
+    "expect_disclaimer": false,
+    "notes": "العقد شريعة المتعاقدين وحظر التعديل المنفرد بالمادة 147 مدني"
+  },
+
+  {
+    "id": "fam-01",
+    "category": "personal_status",
+    "question_ar": "أريد رفع دعوى للمطالبة بـ مؤخر الصداق المثبت في قسيمة الزواج بعد الطلاق",
+    "is_legal": true,
+    "domain": "personal_status",
+    "expected_article_anchor": ["م 20"],
+    "expect_disclaimer": false,
+    "notes": "استحقاق مؤخر الصداق كدين في ذمة الزوج يحل بالطلاق أو الوفاة"
+  },
+  {
+    "id": "fam-02",
+    "category": "personal_status",
+    "question_ar": "زوجي ممتنع عن دفع نفقة الصغار والزوجية فما هي الإجراءات القانونية؟",
+    "is_legal": true,
+    "domain": "personal_status",
+    "expected_article_anchor": ["م 20"],
+    "expect_disclaimer": false,
+    "notes": "دعوى نفقة زوجية ونفقة صغار وأجر مسكن وحضانة"
+  },
+  {
+    "id": "fam-03",
+    "category": "personal_status",
+    "question_ar": "شروط رفع دعوى الخلع وفقاً للمادة 20 من قانون الأحوال الشخصية رقم 1 لسنة 2000",
+    "is_legal": true,
+    "domain": "personal_status",
+    "expected_article_anchor": ["م 20"],
+    "expect_disclaimer": false,
+    "notes": "الخلع وتنازل الزوجة عن مؤخر الصداق ونفقة العدة والمتعة بالمادة 20"
+  },
+  {
+    "id": "fam-04",
+    "category": "personal_status",
+    "question_ar": "دعوى حبس متجمد نفقة زوجية ضد الزوج الممتنع عن السداد في محكمة الأسرة",
+    "is_legal": true,
+    "domain": "personal_status",
+    "expected_article_anchor": ["م 20"],
+    "expect_disclaimer": false,
+    "notes": "دعوى الحبس في دين النفقة بعد استنفاد مهلة السداد"
+  },
+  {
+    "id": "fam-05",
+    "category": "personal_status",
+    "question_ar": "حق الرؤية واستضافة الصغير للأب بعد الانفصال في محكمة الأسرة",
+    "is_legal": true,
+    "domain": "personal_status",
+    "expect_disclaimer": false,
+    "notes": "أحكام الرؤية وتنظيم مواعيدها بمراكز الشباب"
+  },
+  {
+    "id": "fam-06",
+    "category": "personal_status",
+    "question_ar": "قائمة المنقولات الزوجية واسترداد عفش الزوجية أو قيمته النقدية",
+    "is_legal": true,
+    "domain": "personal_status",
+    "expect_disclaimer": false,
+    "notes": "دعوى رد أعيان الجهاز وقائمة المنقولات الزوجية"
+  },
+
+  {
+    "id": "contract-01",
+    "category": "contract",
+    "question_ar": "فسخ عقد البيع الابتدائي لإخلال المشتري بسداد باقي الثمن في الميعاد",
+    "is_legal": true,
+    "domain": "civil",
+    "expected_article_anchor": ["م 157", "م 147"],
+    "expect_disclaimer": false,
+    "notes": "فسخ العقد وإعادة المتعاقدين للحالة التي كانا عليها بالمادتين 147 و 157 مدني"
+  },
+  {
+    "id": "contract-02",
+    "category": "contract",
+    "question_ar": "الشرط الجزائي في عقد المقاولة وهل يحق للقاضي تخفيض قيمة التعويض الاتفاقي؟",
+    "is_legal": true,
+    "domain": "civil",
+    "expected_article_anchor": ["م 224", "م 147"],
+    "expect_disclaimer": false,
+    "notes": "سلطة المحكمة في تعديل وتخفيض الشرط الجزائي المبالغ فيه بالمادة 224 مدني"
+  },
+  {
+    "id": "contract-03",
+    "category": "contract",
+    "question_ar": "العقد شريعة المتعاقدين ولا يجوز نقضه أو تعديله إلا باتفاق الطرفين",
+    "is_legal": true,
+    "domain": "civil",
+    "expected_article_anchor": ["م 147"],
+    "expect_disclaimer": false,
+    "notes": "القوة الملزمة للعقد والمادة 147 من القانون المدني"
+  },
+  {
+    "id": "contract-04",
+    "category": "contract",
+    "question_ar": "بطلان العقد للتدليس والغش واسترداد العربون المسدد",
+    "is_legal": true,
+    "domain": "civil",
+    "expected_article_anchor": ["م 157"],
+    "expect_disclaimer": false,
+    "notes": "عيوب الإرادة والفسخ والتعويض عن الضرر بالمادة 157"
+  },
+  {
+    "id": "contract-05",
+    "category": "contract",
+    "question_ar": "دعوى صحة توقيع على عقد بيع شقة سكنية وإثبات صدور التوقيع",
+    "is_legal": true,
+    "domain": "civil",
+    "expect_disclaimer": false,
+    "notes": "دعوى صحة التوقيع التحفظية وفقاً لقانون الإثبات 25 لسنة 1968"
+  },
+
+  {
+    "id": "proc-01",
+    "category": "procedural",
+    "question_ar": "ما هو ميعاد التقادم المسقط للدعاوى والالتزامات المدنية؟",
+    "is_legal": true,
+    "domain": "civil",
+    "expect_disclaimer": false,
+    "notes": "التقادم المسقط للدعاوى والالتزامات في القانون المدني"
+  },
+  {
+    "id": "proc-02",
+    "category": "procedural",
+    "question_ar": "مواعيد شكوى مكتب العمل والتسوية الودية قبل اللجوء للمحكمة العمالية",
+    "is_legal": true,
+    "domain": "labor",
+    "expected_article_anchor": ["م 70"],
+    "expect_disclaimer": false,
+    "notes": "ميعاد الـ 10 أيام لتقديم الشكوى لمكتب العمل ومهلة الـ 21 يوماً للتسوية بالمادة 70"
+  },
+  {
+    "id": "proc-03",
+    "category": "procedural",
+    "question_ar": "ميعاد رفع دعوى الإلغاء أمام محكمة القضاء الإداري بمجلس الدولة خلال 60 يوماً",
+    "is_legal": true,
+    "domain": "administrative",
+    "expected_article_anchor": ["م 10"],
+    "expect_disclaimer": false,
+    "notes": "المادة 10 من قانون مجلس الدولة وميعاد الستين يوماً للطعن بالإلغاء"
+  },
+  {
+    "id": "proc-04",
+    "category": "procedural",
+    "question_ar": "كفالة حق التقاضي وحظر تحصين القرارات الإدارية في المادة 97 من الدستور المصري",
+    "is_legal": true,
+    "domain": "constitutional",
+    "expected_article_anchor": ["م 97"],
+    "expect_disclaimer": false,
+    "notes": "المادة 97 من الدستور وحظر النص على تحصين أي عمل أو قرار إداري"
+  },
+  {
+    "id": "proc-05",
+    "category": "procedural",
+    "question_ar": "تقادم الدعوى الجنائية وسقوط العقوبة في مواد الجنح بمضي ثلاث سنوات أمام محكمة الجنح",
+    "is_legal": true,
+    "domain": "criminal",
+    "expect_disclaimer": false,
+    "notes": "تقادم الدعوى الجنائية وتقادم العقوبة في قانون الإجراءات الجنائية"
+  },
+  {
+    "id": "proc-06",
+    "category": "procedural",
+    "question_ar": "استئناف الحكم المدني ومواعيد الطعن بالاستئناف في قانون المرافعات",
+    "is_legal": true,
+    "domain": "civil",
+    "expect_disclaimer": false,
+    "notes": "ميعاد الاستئناف 40 يوماً في المواد المدنية والتجارية"
+  },
+
+  {
+    "id": "disc-01",
+    "category": "commercial",
+    "question_ar": "ما هو الموقف القانوني لتداول العملات الرقمية والبتكوين في قانون البنك المركزي المصري والتجارة رقم 194 لسنة 2020؟",
+    "is_legal": true,
+    "domain": "commercial",
+    "expect_disclaimer": true,
+    "notes": "موضوع قانوني متخصص جداً غير مشمول بنصوص تفصيلية في قاعدة البيانات المحلية فيتطلب تنبيهاً قانونياً"
+  },
+  {
+    "id": "disc-02",
+    "category": "commercial",
+    "question_ar": "أحكام التحكيم التجاري الدولي وتذييل حكم التحكيم بالصيغة التنفيذية",
+    "is_legal": true,
+    "domain": "commercial",
+    "expect_disclaimer": true,
+    "notes": "استفسار قانوني عن التحكيم الدولي بدون نصوص مفصلة في قاعدة البيانات المحلية يختبر التنبيه القانوني"
+  },
+
+  {
+    "id": "ood-01",
+    "category": "ood",
+    "question_ar": "طريقة عمل المكرونة بالبشاميل ومقادير الصلصة واللحمة المفرومة",
+    "is_legal": false,
+    "domain": null,
+    "expect_disclaimer": false,
+    "notes": "الطبخ والمأكولات (cooking)"
+  },
+  {
+    "id": "ood-02",
+    "category": "ood",
+    "question_ar": "اكتب لي كود بايثون python لحساب الأعداد الأولية وخوارزمية الفرز",
+    "is_legal": false,
+    "domain": null,
+    "expect_disclaimer": false,
+    "notes": "البرمجة والتقنية (programming)"
+  },
+  {
+    "id": "ood-03",
+    "category": "ood",
+    "question_ar": "مين فاز في مباراة الأهلي والزمالك في نهائي دوري أبطال أفريقيا؟",
+    "is_legal": false,
+    "domain": null,
+    "expect_disclaimer": false,
+    "notes": "الرياضة وكرة القدم (sports)"
+  },
+  {
+    "id": "ood-04",
+    "category": "ood",
+    "question_ar": "ما هي حالة الطقس ودرجات الحرارة المتوقعة غداً في القاهرة والإسكندرية؟",
+    "is_legal": false,
+    "domain": null,
+    "expect_disclaimer": false,
+    "notes": "الطقس والأحوال الجوية (weather)"
+  },
+  {
+    "id": "ood-05",
+    "category": "ood",
+    "question_ar": "اكتب لي كلمات أغنية لسيدة الغناء العربي أم كلثوم",
+    "is_legal": false,
+    "domain": null,
+    "expect_disclaimer": false,
+    "notes": "الموسيقى والشعر (music)"
+  },
+  {
+    "id": "ood-06",
+    "category": "ood",
+    "question_ar": "قولي نكتة مضحكة ومسرحية كوميدية عشان اضحكني",
+    "is_legal": false,
+    "domain": null,
+    "expect_disclaimer": false,
+    "notes": "النكات والترفيه (jokes)"
+  },
+  {
+    "id": "ood-07",
+    "category": "ood",
+    "question_ar": "عندي صداع نصفي شديد وسخونية، آخد دواء إيه ومسكن؟",
+    "is_legal": false,
+    "domain": null,
+    "expect_disclaimer": false,
+    "notes": "الاستشارات الطبية والصحية (medical advice)"
+  },
+  {
+    "id": "ood-08",
+    "category": "ood",
+    "question_ar": "كيفية عمل صينية كيك الشوكولاتة في المطبخ المنزلي",
+    "is_legal": false,
+    "domain": null,
+    "expect_disclaimer": false,
+    "notes": "الطبخ والحلويات (cooking)"
+  },
+  {
+    "id": "ood-09",
+    "category": "ood",
+    "question_ar": "اشرح لي خوارزمية البحث الثنائي في لغة جافاسكريبت javascript",
+    "is_legal": false,
+    "domain": null,
+    "expect_disclaimer": false,
+    "notes": "البرمجة (programming)"
+  }
+]

@@ -1,0 +1,12 @@
+# Keep shell scripts LF-terminated so `chmod +x` + direct execution works on Linux CI.
+*.sh text eol=lf
+
+# Default: normalize text files to LF in the repository.
+* text=auto eol=lf
+
+# Binary assets.
+*.png binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary

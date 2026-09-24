@@ -1,0 +1,27 @@
+{
+  "name": "arabic-law-rag",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Offline-first Egyptian legal AI stack: hybrid Arabic RAG, legal domain guard, multi-agent case graph, and LLMOps evaluation suite.",
+  "license": "MIT",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "eval": "tsx evaluation/runner.ts",
+    "eval:smoke": "tsx lib/llmops/eval/runner.ts evaluation/smoke_suite.json --gate smoke",
+    "eval:compare": "tsx scripts/eval_compare_baseline.ts --current evaluation/reports/latest.json --baseline evaluation/reports/baseline-smoke.json",
+    "retention": "tsx lib/llmops/retention.ts"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.49.1",
+    "next": "^15.1.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.0",
+    "vitest": "^4.1.10"
+  }
+}

@@ -1,0 +1,135 @@
+name: Arabic-law-RAG CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  schedule:
+    # Nightly full evaluation and baseline comparison at 02:00 UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      gate_profile:
+        description: 'Gate profile override (default, pre_judge, pre_rag)'
+        required: false
+        default: 'pre_judge'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ============================================================================
+  # 1. Unit Verification (Typecheck, Unit Tests)
+  # ============================================================================
+  unit:
+    name: Types & Vitest
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci || npm install
+
+      - name: Run TypeScript Compiler Check
+        run: npm run typecheck
+
+      - name: Run Vitest Unit Tests
+        run: npm test
+
+  # ============================================================================
+  # 2. Smoke Evaluation Gate (Pull Requests & Pushes)
+  # ============================================================================
+  eval_smoke:
+    name: LLMOps Smoke Eval (PR Gate)
+    needs: unit
+    if: github.event_name == 'pull_request' || github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      LLMOPS_GATE_PROFILE: ${{ github.event.inputs.gate_profile || 'pre_judge' }}
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci || npm install
+
+      - name: Execute Smoke Evaluation Suite
+        run: |
+          chmod +x ./scripts/eval_smoke.sh
+          ./scripts/eval_smoke.sh
+
+      - name: Upload Evaluation Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-smoke-reports-${{ github.sha }}
+          path: |
+            evaluation/reports/*.json
+            evaluation/reports/*.md
+          retention-days: 14
+
+  # ============================================================================
+  # 3. Nightly Full Evaluation & Baseline Comparison (Main / Schedule)
+  # ============================================================================
+  eval_full_nightly:
+    name: Full Evaluation & Baseline Regression Check
+    needs: unit
+    if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      LLM_JUDGE_MODEL: qwen/qwen3.8-27b
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci || npm install
+
+      - name: Execute Full Evaluation Suite
+        run: |
+          chmod +x ./scripts/eval_full.sh
+          ./scripts/eval_full.sh
+
+      - name: Compare Against Approved Baseline
+        run: |
+          npx tsx scripts/eval_compare_baseline.ts \
+            --current evaluation/reports/latest.json \
+            --baseline evaluation/reports/baseline-smoke.json
+
+      - name: Upload Full Evaluation Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-full-nightly-reports-${{ github.sha }}
+          path: |
+            evaluation/reports/*.json
+            evaluation/reports/*.md
+          retention-days: 30

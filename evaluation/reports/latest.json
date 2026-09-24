@@ -1,0 +1,83 @@
+{
+  "timestamp": "2026-09-24T10:00:38.969Z",
+  "total": 57,
+  "legal_scenarios_count": 48,
+  "ood_scenarios_count": 9,
+  "guard_precision": 1,
+  "guard_recall": 1,
+  "ood_block_rate": 1,
+  "retrieval_recall_at_5": 0.9853,
+  "citation_verify_rate": 1,
+  "disclaimer_rate": 1,
+  "domain_accuracy": 1,
+  "passed": true,
+  "thresholds": {
+    "guard_precision_target": 0.9,
+    "ood_block_rate_target": 1,
+    "retrieval_recall_at_5_target": 0.8
+  },
+  "categories": {
+    "labor": {
+      "category": "labor",
+      "total": 16,
+      "legalCount": 16,
+      "oodCount": 0,
+      "guardAccuracy": 1,
+      "domainAccuracy": 1,
+      "avgRecallAt5": 0.9643
+    },
+    "commercial": {
+      "category": "commercial",
+      "total": 9,
+      "legalCount": 9,
+      "oodCount": 0,
+      "guardAccuracy": 1,
+      "domainAccuracy": 1,
+      "avgRecallAt5": 1
+    },
+    "civil": {
+      "category": "civil",
+      "total": 6,
+      "legalCount": 6,
+      "oodCount": 0,
+      "guardAccuracy": 1,
+      "domainAccuracy": 1,
+      "avgRecallAt5": 1
+    },
+    "personal_status": {
+      "category": "personal_status",
+      "total": 6,
+      "legalCount": 6,
+      "oodCount": 0,
+      "guardAccuracy": 1,
+      "domainAccuracy": 1,
+      "avgRecallAt5": 1
+    },
+    "contract": {
+      "category": "contract",
+      "total": 5,
+      "legalCount": 5,
+      "oodCount": 0,
+      "guardAccuracy": 1,
+      "domainAccuracy": 1,
+      "avgRecallAt5": 1
+    },
+    "procedural": {
+      "category": "procedural",
+      "total": 6,
+      "legalCount": 6,
+      "oodCount": 0,
+      "guardAccuracy": 1,
+      "domainAccuracy": 1,
+      "avgRecallAt5": 1
+    },
+    "ood": {
+      "category": "ood",
+      "total": 9,
+      "legalCount": 0,
+      "oodCount": 9,
+      "guardAccuracy": 1
+    }
+  },
+  "failures": []
+}
